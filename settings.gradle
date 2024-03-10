@@ -1,0 +1,5 @@
+rootProject.name = 'videoplataform'
+include 'domain'
+include 'infrastructure'
+include 'application'
+
