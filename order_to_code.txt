@@ -1,0 +1,7 @@
+1. DOMAIN
+1.1 - Create a ValueObject abstract class
+1.2 - Create a Identifier abstract class who extends ValueObject
+1.3 - Create a Entity abstract class extends identifier and implements sample code
+1.4 - Create a AggregateRoot abstract class, who has Identifier type, and extends Entity abstract class
+1.5 - Create Validatorhandler interface (ValidatorHandler)
+1.6 - Implements Notification Validator Handler and some exceptions
