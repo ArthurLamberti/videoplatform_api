@@ -39,6 +39,11 @@ public class Notification implements ValidationHandler {
     }
 
     @Override
+    public List<Error> getErrors() {
+        return this.errors;
+    }
+
+    @Override
     public <T> T validate(Validation<T> aValidation) {
         try {
             return aValidation.validate();
