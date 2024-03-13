@@ -5,3 +5,9 @@
 1.4 - Create a AggregateRoot abstract class, who has Identifier type, and extends Entity abstract class
 1.5 - Create Validatorhandler interface (ValidatorHandler)
 1.6 - Implements Notification Validator Handler and some exceptions
+
+1.7 - implements tests
+1.8 - Create Object ID (CategoryID)
+1.9 - Create a Object class (Category)
+1.10 - Create a Validator class (CategoryValidator)
+1.11 - Create a Gateway
