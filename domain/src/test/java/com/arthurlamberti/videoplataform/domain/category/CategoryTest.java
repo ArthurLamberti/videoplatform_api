@@ -171,7 +171,7 @@ public class CategoryTest {
     @Test
     public void givenAValidInactiveCategory_whenCallActivate_thenReturnCategoryActivated() {
         final var expectedName = "Movies";
-        final var expectedDescription = "A categoria mais assistida";
+        final var expectedDescription = "Most watched category";
         final var expectedIsActive = true;
 
         final var aCategory =
