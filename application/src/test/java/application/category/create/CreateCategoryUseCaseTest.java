@@ -1,6 +1,9 @@
 package application.category.create;
 
 import application.UseCaseTest;
+import com.arthurlamberti.videoplataform.application.category.create.CreateCategoryCommand;
+import com.arthurlamberti.videoplataform.application.category.create.DefaultCreateCategoryUseCase;
+import com.arthurlamberti.videoplataform.domain.category.CategoryGateway;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
