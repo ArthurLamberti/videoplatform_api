@@ -3,12 +3,8 @@ package com.arthurlamberti.videoplataform.application.category.create;
 import com.arthurlamberti.videoplataform.domain.category.Category;
 import com.arthurlamberti.videoplataform.domain.category.CategoryGateway;
 import com.arthurlamberti.videoplataform.domain.validation.handler.Notification;
-import io.vavr.control.Either;
 
 import java.util.Objects;
-
-import static io.vavr.API.Left;
-import static io.vavr.API.Try;
 
 public class DefaultCreateCategoryUseCase extends CreateCategoryUseCase {
 
@@ -29,6 +25,6 @@ public class DefaultCreateCategoryUseCase extends CreateCategoryUseCase {
         final var aCategory = Category.newCategory(aName, aDescription, isActive);
         aCategory.validate(notification);
 
-        return CreateCategoryOutput.from(aCategory);
+        return CreateCategoryOutput.from(this.categoryGateway.create(aCategory));
     }
 }
