@@ -1,9 +1,11 @@
 package application.category.delete;
 
 import application.UseCaseTest;
+import com.arthurlamberti.videoplataform.application.category.delete.DefaultDeleteCategoryUseCase;
 import com.arthurlamberti.videoplataform.domain.category.Category;
 import com.arthurlamberti.videoplataform.domain.category.CategoryGateway;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
+import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,8 +19,8 @@ import static org.mockito.Mockito.*;
 
 public class DeleteCategoryUseCaseTest extends UseCaseTest {
 
-//    @InjectMocks
-//    private DefaultDeleteCategoryUseCase useCase;
+    @InjectMocks
+    private DefaultDeleteCategoryUseCase useCase;
 
     @Mock
     private CategoryGateway categoryGateway;
@@ -33,24 +35,24 @@ public class DeleteCategoryUseCaseTest extends UseCaseTest {
         final var aCategory = Category.newCategory("Movies", "Most watched category", true);
         final var expectedId = aCategory.getId();
 
-//        doNothing()
-//                .when(categoryGateway).deleteById(eq(expectedId));
-//
-//        Assertions.assertDoesNotThrow(() -> useCase.execute(expectedId.getValue()));
-//
-//        Mockito.verify(categoryGateway, times(1)).deleteById(eq(expectedId));
+        doNothing()
+                .when(categoryGateway).deleteById(any());
+
+        Assertions.assertDoesNotThrow(() -> useCase.execute(expectedId.getValue()));
+
+        Mockito.verify(categoryGateway, times(1)).deleteById(any());
     }
 
     @Test
     public void givenAInvalidId_whenCallsDeleteCategory_shouldBeOK() {
         final var expectedId = CategoryID.from("123");
 
-//        doNothing()
-//                .when(categoryGateway).deleteById(eq(expectedId));
-//
-//        Assertions.assertDoesNotThrow(() -> useCase.execute(expectedId.getValue()));
-//
-//        Mockito.verify(categoryGateway, times(1)).deleteById(eq(expectedId));
+        doNothing()
+                .when(categoryGateway).deleteById(any());
+
+        Assertions.assertDoesNotThrow(() -> useCase.execute(expectedId.getValue()));
+
+        Mockito.verify(categoryGateway, times(1)).deleteById(any());
     }
 
     @Test
@@ -58,11 +60,13 @@ public class DeleteCategoryUseCaseTest extends UseCaseTest {
         final var aCategory = Category.newCategory("Movies", "Most watched category", true);
         final var expectedId = aCategory.getId();
 
-//        doThrow(new IllegalStateException("Gateway error"))
-//                .when(categoryGateway).deleteById(eq(expectedId));
-//
-//        Assertions.assertThrows(IllegalStateException.class, () -> useCase.execute(expectedId.getValue()));
-//
-//        Mockito.verify(categoryGateway, times(1)).deleteById(eq(expectedId));
+        doThrow(new IllegalStateException("Gateway error"))
+                .when(categoryGateway).deleteById(any());
+
+        final var actualException = Assertions.assertThrows(IllegalStateException.class,() -> useCase.execute(expectedId.getValue()));
+
+        Assertions.assertEquals("Gateway error", actualException.getMessage());
+
+        Mockito.verify(categoryGateway, times(1)).deleteById(any());
     }
 }

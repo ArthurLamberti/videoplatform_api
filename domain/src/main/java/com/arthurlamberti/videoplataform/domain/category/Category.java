@@ -107,7 +107,7 @@ public class Category extends AggregateRoot<CategoryID> {
         validate(notification);
 
         if (notification.hasError()) {
-            throw new NotificationException("Failed to create Genre", notification);
+            throw new NotificationException("Failed to create Category", notification);
         }
     }
 

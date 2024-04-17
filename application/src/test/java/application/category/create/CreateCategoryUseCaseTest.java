@@ -72,7 +72,9 @@ public class CreateCategoryUseCaseTest extends UseCaseTest {
         final var aCommand =
                 CreateCategoryCommand.with(expectedName, expectedDescription, expectedIsActive);
 
-        final var notification = useCase.execute(aCommand);
+        final var actualException = Assertions.assertThrows(NotificationException.class,() -> useCase.execute(aCommand));
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
 
         Mockito.verify(categoryGateway, times(0)).create(any());
     }
