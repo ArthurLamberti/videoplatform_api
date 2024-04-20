@@ -99,6 +99,7 @@ public class Category extends AggregateRoot<CategoryID> {
         this.name = aName;
         this.description = aDescription;
         this.updatedAt = Instant.now();
+        selfValidate();
         return this;
     }
 
