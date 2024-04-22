@@ -10,7 +10,7 @@ import lombok.Getter;
 import java.time.Instant;
 
 @Getter
-public class Category extends AggregateRoot<CategoryID> {
+public class Category extends AggregateRoot<CategoryID> implements Cloneable {
     private String name;
     private String description;
     private boolean active;
@@ -103,6 +103,15 @@ public class Category extends AggregateRoot<CategoryID> {
         return this;
     }
 
+    @Override
+    public Category clone() {
+        try {
+            return (Category) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
     private void selfValidate() {
         final var notification = Notification.create();
         validate(notification);
@@ -111,5 +120,4 @@ public class Category extends AggregateRoot<CategoryID> {
             throw new NotificationException("Failed to create Category", notification);
         }
     }
-
 }
