@@ -12,10 +12,13 @@
 1.10 - Create a Validator class (CategoryValidator)
 1.11 - Create a Gateway
 
-2. APPLICATION1
+2. APPLICATION
 2.1 Implement tests
 2.2 Implement NullaryUseCase, UnitUseCase and UseCase
 2.3 Implement a record command. Ex: CreateGenreCommand
 2.4 Implement a record Output. Ex: CreateGenreOutput
 2.5 Create a abstract UseCase. Ex: CreateGenreUseCase
 2.6 Implement the default usecase. Ex: DefaultCreateGenreUseCase
+
+3. INFRASTRUCTURE
+3.1 Create api folder and interface. Ex: CategoryAPI
