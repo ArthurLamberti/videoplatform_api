@@ -192,7 +192,7 @@ public class GenreTest {
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
     }
-    
+
     @Test
     public void givenAValidGenre_whenCallUpdateWithNullName_shouldReceiveNotificationException() {
         final String expectedName = null;
