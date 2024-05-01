@@ -52,7 +52,15 @@ public class Genre extends AggregateRoot<GenreID> {
     }
 
     public static Genre with(Genre aGenre) {
-        return null;
+        return new Genre(
+                aGenre.id,
+                aGenre.name,
+                aGenre.active,
+                new ArrayList<>(aGenre.categories),
+                aGenre.createdAt,
+                aGenre.updatedAt,
+                aGenre.deletedAt
+        );
     }
 
     @Override

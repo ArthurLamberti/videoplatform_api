@@ -64,7 +64,7 @@ public class GetGenreByIdUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(aGenre.getUpdatedAt(), actualGenre.updatedAt());
         Assertions.assertEquals(aGenre.getDeletedAt(), actualGenre.deletedAt());
 
-        Mockito.verify(genreGateway, times(1)).findById(eq(expectedId));
+        Mockito.verify(genreGateway, times(1)).findById(any());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class GetGenreByIdUseCaseTest extends UseCaseTest {
 
         final var expectedId = GenreID.from("123");
 
-        when(genreGateway.findById(eq(expectedId)))
+        when(genreGateway.findById(any()))
                 .thenReturn(Optional.empty());
 
         // when

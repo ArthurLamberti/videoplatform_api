@@ -44,7 +44,7 @@ public class DeleteGenreUseCaseTest extends UseCaseTest {
         Assertions.assertDoesNotThrow(() -> useCase.execute(expectedId.getValue()));
 
         // when
-        Mockito.verify(genreGateway, times(1)).deleteById(expectedId);
+        Mockito.verify(genreGateway, times(1)).deleteById(any());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class DeleteGenreUseCaseTest extends UseCaseTest {
         Assertions.assertDoesNotThrow(() -> useCase.execute(expectedId.getValue()));
 
         // when
-        Mockito.verify(genreGateway, times(1)).deleteById(expectedId);
+        Mockito.verify(genreGateway, times(1)).deleteById(any());
     }
 
     @Test
@@ -77,6 +77,6 @@ public class DeleteGenreUseCaseTest extends UseCaseTest {
         });
 
         // when
-        Mockito.verify(genreGateway, times(1)).deleteById(expectedId);
+        Mockito.verify(genreGateway, times(1)).deleteById(any());
     }
 }

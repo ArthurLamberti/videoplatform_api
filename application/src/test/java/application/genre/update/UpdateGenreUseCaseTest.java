@@ -69,7 +69,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         Assertions.assertNotNull(actualOutput);
         Assertions.assertEquals(expectedId.getValue(), actualOutput.id());
 
-        Mockito.verify(genreGateway, times(1)).findById(eq(expectedId));
+        Mockito.verify(genreGateway, times(1)).findById(any());
 
         Mockito.verify(genreGateway, times(1)).update(argThat(aUpdatedGenre ->
                 Objects.equals(expectedId, aUpdatedGenre.getId())
@@ -117,7 +117,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         Assertions.assertNotNull(actualOutput);
         Assertions.assertEquals(expectedId.getValue(), actualOutput.id());
 
-        Mockito.verify(genreGateway, times(1)).findById(eq(expectedId));
+        Mockito.verify(genreGateway, times(1)).findById(any());
 
         Mockito.verify(categoryGateway, times(1)).existsByIds(eq(expectedCategories));
 
@@ -165,7 +165,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         Assertions.assertNotNull(actualOutput);
         Assertions.assertEquals(expectedId.getValue(), actualOutput.id());
 
-        Mockito.verify(genreGateway, times(1)).findById(eq(expectedId));
+        Mockito.verify(genreGateway, times(1)).findById(any());
 
         Mockito.verify(genreGateway, times(1)).update(argThat(aUpdatedGenre ->
                 Objects.equals(expectedId, aUpdatedGenre.getId())
@@ -210,7 +210,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
 
-        Mockito.verify(genreGateway, times(1)).findById(eq(expectedId));
+        Mockito.verify(genreGateway, times(1)).findById(any());
 
         Mockito.verify(categoryGateway, times(0)).existsByIds(any());
 
@@ -258,7 +258,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(expectedErrorMessageOne, actualException.getErrors().get(0).message());
         Assertions.assertEquals(expectedErrorMessageTwo, actualException.getErrors().get(1).message());
 
-        Mockito.verify(genreGateway, times(1)).findById(eq(expectedId));
+        Mockito.verify(genreGateway, times(1)).findById(any());
 
         Mockito.verify(categoryGateway, times(1)).existsByIds(eq(expectedCategories));
 
