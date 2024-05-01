@@ -51,6 +51,10 @@ public class Genre extends AggregateRoot<GenreID> {
         return new Genre(anId, aName, isActive, new ArrayList<>(), now, now, deletedAt);
     }
 
+    public static Genre with(Genre aGenre) {
+        return null;
+    }
+
     @Override
     public void validate(final ValidationHandler handler) {
         new GenreValidator(this, handler).validate();

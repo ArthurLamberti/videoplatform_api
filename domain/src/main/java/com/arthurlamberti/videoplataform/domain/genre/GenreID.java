@@ -20,8 +20,12 @@ public class GenreID extends Identifier {
         return GenreID.from(UUID.randomUUID());
     }
 
-    private static GenreID from(final UUID randomUUID) {
+    public static GenreID from(final UUID randomUUID) {
         return new GenreID(randomUUID.toString().toLowerCase());
+    }
+
+    public static GenreID from(final String anId) {
+        return new GenreID(anId.toLowerCase());
     }
 
     @Override
