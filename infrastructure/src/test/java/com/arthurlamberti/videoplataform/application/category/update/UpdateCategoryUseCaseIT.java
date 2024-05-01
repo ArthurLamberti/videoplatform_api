@@ -31,7 +31,7 @@ public class UpdateCategoryUseCaseIT {
     @SpyBean
     private CategoryGateway categoryGateway;
 
-//    @Test
+    @Test
     public void givenAValidCommand_whenCallsUpdateCategory_shouldReturnCategoryId() {
         final var aCategory =
                 Category.newCategory("Film", null, true);
@@ -68,7 +68,7 @@ public class UpdateCategoryUseCaseIT {
         Assertions.assertNull(actualCategory.getDeletedAt());
     }
 
-//    @Test
+    @Test
     public void givenAInvalidName_whenCallsUpdateCategory_thenShouldReturnDomainException() {
         final var aCategory =
                 Category.newCategory("Film", null, true);
@@ -94,7 +94,7 @@ public class UpdateCategoryUseCaseIT {
         Mockito.verify(categoryGateway, times(0)).update(any());
     }
 
-//    @Test
+    @Test
     public void givenAValidInactivateCommand_whenCallsUpdateCategory_shouldReturnInactiveCategoryId() {
         final var aCategory =
                 Category.newCategory("Film", null, true);
@@ -132,7 +132,7 @@ public class UpdateCategoryUseCaseIT {
         Assertions.assertNotNull(actualCategory.getDeletedAt());
     }
 
-//    @Test
+    @Test
     public void givenAValidCommand_whenGatewayThrowsRandomException_shouldReturnAException() {
         final var aCategory =
                 Category.newCategory("Film", null, true);
@@ -156,10 +156,9 @@ public class UpdateCategoryUseCaseIT {
         doThrow(new IllegalStateException(expectedErrorMessage))
                 .when(categoryGateway).update(any());
 
-        final var notification = Assertions.assertThrows(DomainException.class, () -> useCase.execute(aCommand));
+        final var notification = Assertions.assertThrows(IllegalStateException.class, () -> useCase.execute(aCommand));
 
-        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, notification.getErrors().get(0).message());
+        Assertions.assertEquals(expectedErrorMessage, notification.getMessage());
 
         final var actualCategory =
                 categoryRepository.findById(expectedId.getValue()).get();
@@ -172,7 +171,7 @@ public class UpdateCategoryUseCaseIT {
         Assertions.assertEquals(aCategory.getDeletedAt(), actualCategory.getDeletedAt());
     }
 
-//    @Test
+    @Test
     public void givenACommandWithInvalidID_whenCallsUpdateCategory_shouldReturnNotFoundException() {
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";

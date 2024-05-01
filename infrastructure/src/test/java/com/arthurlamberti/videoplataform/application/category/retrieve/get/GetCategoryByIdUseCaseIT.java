@@ -30,7 +30,7 @@ public class GetCategoryByIdUseCaseIT {
     @SpyBean
     private CategoryGateway categoryGateway;
 
-//    @Test
+    @Test
     public void givenAValidId_whenCallsGetCategory_shouldReturnCategory() {
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
@@ -54,7 +54,7 @@ public class GetCategoryByIdUseCaseIT {
         Assertions.assertEquals(aCategory.getDeletedAt(), actualCategory.deletedAt());
     }
 
-//    @Test
+    @Test
     public void givenAInvalidId_whenCallsGetCategory_shouldReturnNotFound() {
         final var expectedErrorMessage = "Category with ID 123 was not found";
         final var expectedId = CategoryID.from("123");
@@ -67,7 +67,7 @@ public class GetCategoryByIdUseCaseIT {
         Assertions.assertEquals(expectedErrorMessage, actualException.getMessage());
     }
 
-//    @Test
+    @Test
     public void givenAValidId_whenGatewayThrowsException_shouldReturnException() {
         final var expectedErrorMessage = "Gateway error";
         final var expectedId = CategoryID.from("123");

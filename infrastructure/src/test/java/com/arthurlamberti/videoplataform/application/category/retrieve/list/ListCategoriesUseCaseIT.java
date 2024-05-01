@@ -40,7 +40,7 @@ public class ListCategoriesUseCaseIT {
         categoryRepository.saveAllAndFlush(categories);
     }
 
-//    @Test
+    @Test
     public void givenAValidTerm_whenTermDoesntMatchsPrePersisted_shouldReturnEmptyPage() {
         final var expectedPage = 0;
         final var expectedPerPage = 10;
@@ -61,7 +61,7 @@ public class ListCategoriesUseCaseIT {
         Assertions.assertEquals(expectedTotal, actualResult.total());
     }
 
-//    @ParameterizedTest
+    @ParameterizedTest
     @CsvSource({
             "fil,0,10,1,1,Filmes",
             "net,0,10,1,1,Netflix Originals",
@@ -93,7 +93,7 @@ public class ListCategoriesUseCaseIT {
         Assertions.assertEquals(expectedCategoryName, actualResult.items().get(0).name());
     }
 
-//    @ParameterizedTest
+    @ParameterizedTest
     @CsvSource({
             "name,asc,0,10,7,7,Amazon Originals",
             "name,desc,0,10,7,7,Sports",
@@ -123,7 +123,7 @@ public class ListCategoriesUseCaseIT {
         Assertions.assertEquals(expectedCategoryName, actualResult.items().get(0).name());
     }
 
-//    @ParameterizedTest
+    @ParameterizedTest
     @CsvSource({
             "0,2,2,7,Amazon Originals;Documentários",
             "1,2,2,7,Filmes;Kids",

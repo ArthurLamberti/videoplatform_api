@@ -30,7 +30,7 @@ public class DeleteCategoryUseCaseIT {
     @SpyBean
     private CategoryGateway categoryGateway;
 
-//    @Test
+    @Test
     public void givenAValidId_whenCallsDeleteCategory_shouldBeOK() {
         final var aCategory = Category.newCategory("Filmes", "A categoria mais assistida", true);
         final var expectedId = aCategory.getId();
@@ -44,7 +44,7 @@ public class DeleteCategoryUseCaseIT {
         Assertions.assertEquals(0, categoryRepository.count());
     }
 
-//    @Test
+    @Test
     public void givenAInvalidId_whenCallsDeleteCategory_shouldBeOK() {
         final var expectedId = CategoryID.from("123");
 
@@ -55,7 +55,7 @@ public class DeleteCategoryUseCaseIT {
         Assertions.assertEquals(0, categoryRepository.count());
     }
 
-//    @Test
+    @Test
     public void givenAValidId_whenGatewayThrowsException_shouldReturnException() {
         final var aCategory = Category.newCategory("Filmes", "A categoria mais assistida", true);
         final var expectedId = aCategory.getId();

@@ -27,7 +27,7 @@ public class CreateCategoryUseCaseIT {
     @SpyBean
     private CategoryGateway categoryGateway;
 
-//    @Test
+    @Test
     public void givenAValidCommand_whenCallsCreateCategory_shouldReturnCategoryId() {
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
@@ -56,7 +56,7 @@ public class CreateCategoryUseCaseIT {
         Assertions.assertNull(actualCategory.getDeletedAt());
     }
 
-//    @Test
+    @Test
     public void givenAInvalidName_whenCallsCreateCategory_thenShouldReturnDomainException() {
         final String expectedName = null;
         final var expectedDescription = "A categoria mais assistida";
@@ -79,7 +79,7 @@ public class CreateCategoryUseCaseIT {
         Mockito.verify(categoryGateway, times(0)).create(any());
     }
 
-//    @Test
+    @Test
     public void givenAValidCommandWithInactiveCategory_whenCallsCreateCategory_shouldReturnInactiveCategoryId() {
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
@@ -108,12 +108,11 @@ public class CreateCategoryUseCaseIT {
         Assertions.assertNotNull(actualCategory.getDeletedAt());
     }
 
-//    @Test
+    @Test
     public void givenAValidCommand_whenGatewayThrowsRandomException_shouldReturnAException() {
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
-        final var expectedErrorCount = 1;
         final var expectedErrorMessage = "Gateway error";
 
         final var aCommand =
@@ -122,9 +121,8 @@ public class CreateCategoryUseCaseIT {
         doThrow(new IllegalStateException(expectedErrorMessage))
                         .when(categoryGateway).create(any());
 
-        final var notification = Assertions.assertThrows(DomainException.class, () -> useCase.execute(aCommand));
+        final var notification = Assertions.assertThrows(IllegalStateException.class, () -> useCase.execute(aCommand));
 
-        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, notification.getErrors().get(0).message());
+        Assertions.assertEquals(expectedErrorMessage, notification.getMessage());
     }
 }
