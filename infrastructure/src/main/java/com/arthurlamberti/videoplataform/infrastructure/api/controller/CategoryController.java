@@ -56,13 +56,10 @@ public class CategoryController implements CategoryAPI {
                 input.active() != null ? input.active() : true
         );
 
-        final Function<Notification, ResponseEntity<?>> onError = notification ->
-                ResponseEntity.unprocessableEntity().body(notification);
+        CreateCategoryOutput output = this.createCategoryUseCase.execute(aCommand);
 
-        final Function<CreateCategoryOutput, ResponseEntity<?>> onSuccess = output ->
-                ResponseEntity.created(URI.create("/categories/" + output.id())).body(output);
 
-        return ResponseEntity.ok().body(this.createCategoryUseCase.execute(aCommand));
+        return ResponseEntity.created(URI.create("/categories/" + output.id())).body(output);
     }
 
     @Override

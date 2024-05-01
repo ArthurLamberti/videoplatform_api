@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Inherited
 @ActiveProfiles("test-integration")
 @ComponentScan(
-        basePackages = "com.fullcycle.admin.catalogo",
+        basePackages = "com.arthurlamberti.videoplataform",
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".[MySQLGateway]")
         }
