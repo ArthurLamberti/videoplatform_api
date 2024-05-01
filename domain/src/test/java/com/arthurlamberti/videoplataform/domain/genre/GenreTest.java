@@ -2,15 +2,11 @@ package com.arthurlamberti.videoplataform.domain.genre;
 
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
-import com.arthurlamberti.videoplataform.domain.utils.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static com.arthurlamberti.videoplataform.domain.utils.StringUtils.generateValidString;
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,7 +61,7 @@ public class GenreTest {
         final var expectedName = generateValidString(260);
         final var expectedIsActive = true;
         final var expectedErrorCount = 1;
-        final var expectedErrorMessage = "'Name' must be between 1 and 255 characters";
+        final var expectedErrorMessage = "'name' must be between 1 and 255 characters";
 
         final var actualException = assertThrows(NotificationException.class, () -> Genre.newGenre(expectedName, expectedIsActive));
 
@@ -83,7 +79,7 @@ public class GenreTest {
 
         assertNotNull(actualGenre);
         assertTrue(actualGenre.isActive());
-        assertNotNull(actualGenre.getDeletedAt());
+        assertNull(actualGenre.getDeletedAt());
 
         final var actualCreatedAt = actualGenre.getCreatedAt();
         final var actualUpdatedAt = actualGenre.getUpdatedAt();
@@ -113,14 +109,14 @@ public class GenreTest {
         final var actualCreatedAt = actualGenre.getCreatedAt();
         final var actualUpdatedAt = actualGenre.getUpdatedAt();
 
-        actualGenre.deactivate();
+        actualGenre.activate();
         assertNotNull(actualGenre.getId());
         assertEquals(expectedName, actualGenre.getName());
         assertEquals(expectedIsActive, actualGenre.isActive());
         assertEquals(expectedCategories, actualGenre.getCategories().size());
         assertEquals(actualCreatedAt, actualGenre.getCreatedAt());
         assertTrue(actualUpdatedAt.isBefore(actualGenre.getUpdatedAt()));
-        assertNotNull(actualGenre.getDeletedAt());
+        assertNull(actualGenre.getDeletedAt());
     }
 
     @Test
