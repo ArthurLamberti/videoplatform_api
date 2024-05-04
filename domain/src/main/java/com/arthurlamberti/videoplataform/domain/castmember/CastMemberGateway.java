@@ -10,9 +10,9 @@ public interface CastMemberGateway {
 
     CastMember create(CastMember aGenre);
 
-    void deleteById(GenreID anId);
+    void deleteById(CastMemberID anId);
 
-    Optional<CastMember> findById(GenreID anId);
+    Optional<CastMember> findById(CastMemberID anId);
 
     CastMember update(CastMember aGenre);
 
