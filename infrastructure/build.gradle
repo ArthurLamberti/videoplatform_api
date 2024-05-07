@@ -47,6 +47,7 @@ dependencies {
     implementation('com.fasterxml.jackson.module:jackson-module-afterburner')
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
     testImplementation('org.flywaydb:flyway-core')
     testImplementation('org.springframework.boot:spring-boot-starter-test')

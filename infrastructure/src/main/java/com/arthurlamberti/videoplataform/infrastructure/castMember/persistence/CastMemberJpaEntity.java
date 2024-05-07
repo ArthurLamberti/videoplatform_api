@@ -14,10 +14,9 @@ import java.time.Instant;
 
 @Entity(name = "CastMember")
 @Table(name = "cast_members")
+@NoArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class CastMemberJpaEntity {
 
     @Id
@@ -36,6 +35,14 @@ public class CastMemberJpaEntity {
     @Column(name = "updated_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant updatedAt;
 
+    public CastMemberJpaEntity(String id, String name, CastMemberType type, Instant createdAt, Instant updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public static CastMemberJpaEntity from(final CastMember aMember) {
         return new CastMemberJpaEntity(
                 aMember.getId().getValue(),
@@ -48,11 +55,11 @@ public class CastMemberJpaEntity {
 
     public CastMember toAggregate() {
         return CastMember.with(
-                CastMemberID.from(getId()),
-                getName(),
-                getType(),
-                getCreatedAt(),
-                getUpdatedAt()
+                CastMemberID.from(this.id),
+                this.name,
+                this.type,
+                this.createdAt,
+                this.updatedAt
         );
     }
 
