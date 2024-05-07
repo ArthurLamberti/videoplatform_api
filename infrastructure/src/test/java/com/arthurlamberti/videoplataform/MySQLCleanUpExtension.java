@@ -1,5 +1,6 @@
 package com.arthurlamberti.videoplataform;
 
+import com.arthurlamberti.videoplataform.infrastructure.castMember.persistence.CastMemberRepository;
 import com.arthurlamberti.videoplataform.infrastructure.category.persistence.CategoryRepository;
 import com.arthurlamberti.videoplataform.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
@@ -18,7 +19,8 @@ public class MySQLCleanUpExtension implements BeforeEachCallback {
 
         cleanUp(List.of(
                 appContext.getBean(GenreRepository.class),
-                appContext.getBean(CategoryRepository.class)
+                appContext.getBean(CategoryRepository.class),
+                appContext.getBean(CastMemberRepository.class)
         ));
     }
 
