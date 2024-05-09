@@ -7,7 +7,7 @@ import com.arthurlamberti.videoplataform.domain.exception.NotFoundException;
 
 import static java.util.Objects.requireNonNull;
 
-public final class DefaultGetCastMemberByIdUseCase extends CastMemberByIdUseCase {
+public non-sealed  class DefaultGetCastMemberByIdUseCase extends CastMemberByIdUseCase {
     private final CastMemberGateway castMemberGateway;
 
     public DefaultGetCastMemberByIdUseCase(CastMemberGateway castMemberGateway) {

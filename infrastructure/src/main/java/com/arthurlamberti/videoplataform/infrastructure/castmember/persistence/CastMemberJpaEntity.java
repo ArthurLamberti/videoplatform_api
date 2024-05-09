@@ -1,10 +1,9 @@
-package com.arthurlamberti.videoplataform.infrastructure.castMember.persistence;
+package com.arthurlamberti.videoplataform.infrastructure.castmember.persistence;
 
 
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

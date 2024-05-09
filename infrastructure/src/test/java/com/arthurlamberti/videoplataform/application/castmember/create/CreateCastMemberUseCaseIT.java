@@ -5,7 +5,7 @@ import com.arthurlamberti.videoplataform.IntegrationTest;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
-import com.arthurlamberti.videoplataform.infrastructure.castMember.persistence.CastMemberRepository;
+import com.arthurlamberti.videoplataform.infrastructure.castmember.persistence.CastMemberRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.arthurlamberti.videoplataform;
 
-import com.arthurlamberti.videoplataform.infrastructure.castMember.persistence.CastMemberRepository;
+import com.arthurlamberti.videoplataform.infrastructure.castmember.persistence.CastMemberRepository;
 import com.arthurlamberti.videoplataform.infrastructure.category.persistence.CategoryRepository;
 import com.arthurlamberti.videoplataform.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.extension.BeforeEachCallback;

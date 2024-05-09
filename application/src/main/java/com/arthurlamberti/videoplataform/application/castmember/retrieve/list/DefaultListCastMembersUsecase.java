@@ -6,7 +6,7 @@ import com.arthurlamberti.videoplataform.domain.pagination.SearchQuery;
 
 import static java.util.Objects.requireNonNull;
 
-public final class DefaultListCastMembersUsecase extends ListCastMembersUsecase {
+public non-sealed class DefaultListCastMembersUsecase extends ListCastMembersUsecase {
 
     private final CastMemberGateway castMemberGateway;
 

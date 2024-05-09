@@ -7,7 +7,7 @@ import com.arthurlamberti.videoplataform.domain.validation.handler.Notification;
 
 import java.util.Objects;
 
-public final class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCase {
+public non-sealed class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCase {
 
     private final CastMemberGateway castMemberGateway;
 
@@ -17,8 +17,8 @@ public final class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCas
 
     @Override
     public CreateCastMemberOutput execute(CreateCastMemberCommand aCommand) {
-        final var aName = aCommand.aName();
-        final var aType = aCommand.aType();
+        final var aName = aCommand.name();
+        final var aType = aCommand.type();
         final var notification = Notification.create();
         final var aMember = notification.validate(() -> CastMember.newMember(aName, aType));
 

@@ -9,7 +9,7 @@ import com.arthurlamberti.videoplataform.domain.validation.handler.Notification;
 
 import static java.util.Objects.requireNonNull;
 
-public final class DefaultUpdateCastMemberUseCase extends UpdateCastMemberUseCase {
+public non-sealed  class DefaultUpdateCastMemberUseCase extends UpdateCastMemberUseCase {
 
     private final CastMemberGateway castMemberGatewayl;
 

@@ -1,12 +1,12 @@
-package com.arthurlamberti.videoplataform.infrastructure.castMember;
+package com.arthurlamberti.videoplataform.infrastructure.castmember;
 
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.pagination.Pagination;
 import com.arthurlamberti.videoplataform.domain.pagination.SearchQuery;
-import com.arthurlamberti.videoplataform.infrastructure.castMember.persistence.CastMemberJpaEntity;
-import com.arthurlamberti.videoplataform.infrastructure.castMember.persistence.CastMemberRepository;
+import com.arthurlamberti.videoplataform.infrastructure.castmember.persistence.CastMemberJpaEntity;
+import com.arthurlamberti.videoplataform.infrastructure.castmember.persistence.CastMemberRepository;
 import com.arthurlamberti.videoplataform.infrastructure.utils.SpecificationUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

@@ -1,4 +1,4 @@
-package com.arthurlamberti.videoplataform.infrastructure.castMember.persistence;
+package com.arthurlamberti.videoplataform.infrastructure.castmember.persistence;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

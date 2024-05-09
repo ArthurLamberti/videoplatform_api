@@ -5,7 +5,7 @@ import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 
 import static java.util.Objects.requireNonNull;
 
-public final class DefaultDeleteCastMemberUseCase extends DeleteCastMemberUseCase
+public non-sealed  class DefaultDeleteCastMemberUseCase extends DeleteCastMemberUseCase
 {
     private CastMemberGateway castMemberGateway;
 
