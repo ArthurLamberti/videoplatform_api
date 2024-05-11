@@ -8,11 +8,11 @@ import java.util.Optional;
 public enum Rating {
     ER("ER"),
     L("L"),
-    AGR_10("10"),
-    AGR_12("12"),
-    AGR_14("14"),
-    AGR_16("16"),
-    AGR_18("18");
+    AGE_10("10"),
+    AGE_12("12"),
+    AGE_14("14"),
+    AGE_16("16"),
+    AGE_18("18");
 
     private final String name;
 

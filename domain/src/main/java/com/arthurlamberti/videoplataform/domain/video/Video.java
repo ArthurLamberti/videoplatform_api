@@ -162,9 +162,39 @@ public class Video extends AggregateRoot<VideoID> {
         this.genres = genres != null ? new HashSet<>(genres) : Collections.emptySet();
     }
 
-    public void setCastmembers(Set<CastMemberID> castmembers) {
+    public Video setThumbnail(final ImageMedia thumbnail) {
+        this.thumbnail = thumbnail;
+        this.updatedAt = InstantUtils.now();
+        return this;
+    }
+    public Video setThumbnailHalf(final ImageMedia thumbnailHalf) {
+        this.thumbnailHalf = thumbnailHalf;
+        this.updatedAt = InstantUtils.now();
+        return this;
+    }
+
+    public Video setTrailer(final AudioVideoMedia trailer) {
+        this.trailer = trailer;
+        this.updatedAt = InstantUtils.now();
+        return this;
+    }
+
+    public Video setVideo(final AudioVideoMedia video) {
+        this.video = video;
+        this.updatedAt = InstantUtils.now();
+        return this;
+    }
+
+    private void setCastmembers(Set<CastMemberID> castmembers) {
         this.castmembers = castmembers != null ? new HashSet<>(castmembers) : Collections.emptySet();
     }
+
+    public Video setBanner(final ImageMedia banner) {
+        this.banner = banner;
+        this.updatedAt = Instant.now();
+        return this;
+    }
+
 
     public static Video with(final Video video) {
         return new Video(
@@ -187,5 +217,31 @@ public class Video extends AggregateRoot<VideoID> {
                 new HashSet<>(video.getGenres()),
                 new HashSet<>(video.getCastmembers())
         );
+    }
+
+    public Video update(
+            final String title,
+            final String description,
+            final Year launchedAt,
+            final double duration,
+            final Rating rating,
+            final boolean opened,
+            final boolean published,
+            final Set<CategoryID> categories,
+            final Set<GenreID> genres,
+            final Set<CastMemberID> castmembers
+    ) {
+        this.title = title;
+        this.description = description;
+        this.launchedAt = launchedAt;
+        this.duration = duration;
+        this.rating = rating;
+        this.opened = opened;
+        this.published = published;
+        this.setCastmembers(castmembers);
+        this.setCategories(categories);
+        this.setGenres(genres);
+        this.updatedAt = InstantUtils.now();
+        return this;
     }
 }
