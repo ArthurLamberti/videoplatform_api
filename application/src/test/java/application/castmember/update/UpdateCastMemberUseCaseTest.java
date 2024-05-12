@@ -4,7 +4,6 @@ import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.castmember.update.DefaultUpdateCastMemberUseCase;
 import com.arthurlamberti.videoplataform.application.castmember.update.UpdateCastMemberCommand;
-import com.arthurlamberti.videoplataform.application.castmember.update.UpdateCastMemberUseCase;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;
@@ -120,7 +119,7 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
 
         final var expectedId = "123";
         final String expectedName = Fixture.name();
-        final CastMemberType expectedType = Fixture.CastMember.type();
+        final CastMemberType expectedType = Fixture.CastMembers.type();
 
         final var aCommand = UpdateCastMemberCommand.with(
                 expectedId,
