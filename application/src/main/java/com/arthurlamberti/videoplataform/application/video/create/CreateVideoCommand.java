@@ -2,15 +2,16 @@ package com.arthurlamberti.videoplataform.application.video.create;
 
 import com.arthurlamberti.videoplataform.domain.video.Resource;
 
+import java.util.Optional;
 import java.util.Set;
 
 public record CreateVideoCommand(
         String title,
         String description,
-        int launchedAt,
-        double duration,
-        boolean opened,
-        boolean published,
+        Integer launchedAt,
+        Double duration,
+        Boolean opened,
+        Boolean published,
         String rating,
         Set<String> categories,
         Set<String> genres,
@@ -24,10 +25,10 @@ public record CreateVideoCommand(
     public static CreateVideoCommand with(
             final String title,
             final String description,
-            final int launchedAt,
-            final double duration,
-            final boolean opened,
-            final boolean published,
+            final Integer launchedAt,
+            final Double duration,
+            final Boolean opened,
+            final Boolean published,
             final String rating,
             final Set<String> categories,
             final Set<String> genres,
@@ -36,7 +37,7 @@ public record CreateVideoCommand(
             final Resource trailer,
             final Resource banner,
             final Resource thumbnail,
-            final Resource thumbailHalf
+            final Resource thumbnailHalf
     ) {
         return new CreateVideoCommand(
                 title,
@@ -53,7 +54,27 @@ public record CreateVideoCommand(
                 trailer,
                 banner,
                 thumbnail,
-                thumbailHalf
+                thumbnailHalf
         );
+    }
+
+    public Optional<Resource> getVideo() {
+        return Optional.ofNullable(video);
+    }
+
+    public Optional<Resource> getTrailer() {
+        return Optional.ofNullable(trailer);
+    }
+
+    public Optional<Resource> getBanner() {
+        return Optional.ofNullable(banner);
+    }
+
+    public Optional<Resource> getThumbnail() {
+        return Optional.ofNullable(thumbnail);
+    }
+
+    public Optional<Resource> getThumbailHalf() {
+        return Optional.ofNullable(thumbailHalf);
     }
 }

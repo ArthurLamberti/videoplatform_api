@@ -50,7 +50,7 @@ public class VideoTest {
         assertEquals(expectedRating, actualVideo.getRating());
         assertEquals(expectedCategories, actualVideo.getCategories());
         assertEquals(expectedGenres, actualVideo.getGenres());
-        assertEquals(expectedMembers, actualVideo.getCastmembers());
+        assertEquals(expectedMembers, actualVideo.getCastMembers());
         assertTrue(actualVideo.getVideo().isEmpty());
         assertTrue(actualVideo.getTrailer().isEmpty());
         assertTrue(actualVideo.getBanner().isEmpty());
@@ -120,7 +120,7 @@ public class VideoTest {
         assertEquals(expectedRating, actualVideo.getRating());
         assertEquals(expectedCategories, actualVideo.getCategories());
         assertEquals(expectedGenres, actualVideo.getGenres());
-        assertEquals(expectedMembers, actualVideo.getCastmembers());
+        assertEquals(expectedMembers, actualVideo.getCastMembers());
         assertTrue(actualVideo.getVideo().isEmpty());
         assertTrue(actualVideo.getTrailer().isEmpty());
         assertTrue(actualVideo.getBanner().isEmpty());
@@ -177,7 +177,7 @@ public class VideoTest {
         assertEquals(expectedRating, actualVideo.getRating());
         assertEquals(expectedCategories, actualVideo.getCategories());
         assertEquals(expectedGenres, actualVideo.getGenres());
-        assertEquals(expectedMembers, actualVideo.getCastmembers());
+        assertEquals(expectedMembers, actualVideo.getCastMembers());
         assertEquals(aVideoMedia, actualVideo.getVideo().get());
         assertTrue(actualVideo.getTrailer().isEmpty());
         assertTrue(actualVideo.getBanner().isEmpty());
@@ -234,7 +234,7 @@ public class VideoTest {
         assertEquals(expectedRating, actualVideo.getRating());
         assertEquals(expectedCategories, actualVideo.getCategories());
         assertEquals(expectedGenres, actualVideo.getGenres());
-        assertEquals(expectedMembers, actualVideo.getCastmembers());
+        assertEquals(expectedMembers, actualVideo.getCastMembers());
         assertTrue(actualVideo.getVideo().isEmpty());
         assertEquals(aTrailerMedia, actualVideo.getTrailer().get());
         assertTrue(actualVideo.getBanner().isEmpty());
@@ -291,7 +291,7 @@ public class VideoTest {
         assertEquals(expectedRating, actualVideo.getRating());
         assertEquals(expectedCategories, actualVideo.getCategories());
         assertEquals(expectedGenres, actualVideo.getGenres());
-        assertEquals(expectedMembers, actualVideo.getCastmembers());
+        assertEquals(expectedMembers, actualVideo.getCastMembers());
         assertTrue(actualVideo.getVideo().isEmpty());
         assertTrue(actualVideo.getTrailer().isEmpty());
         assertEquals(aBannerMedia, actualVideo.getBanner().get());
@@ -348,7 +348,7 @@ public class VideoTest {
         assertEquals(expectedRating, actualVideo.getRating());
         assertEquals(expectedCategories, actualVideo.getCategories());
         assertEquals(expectedGenres, actualVideo.getGenres());
-        assertEquals(expectedMembers, actualVideo.getCastmembers());
+        assertEquals(expectedMembers, actualVideo.getCastMembers());
         assertTrue(actualVideo.getVideo().isEmpty());
         assertTrue(actualVideo.getTrailer().isEmpty());
         assertTrue(actualVideo.getBanner().isEmpty());
@@ -405,7 +405,7 @@ public class VideoTest {
         assertEquals(expectedRating, actualVideo.getRating());
         assertEquals(expectedCategories, actualVideo.getCategories());
         assertEquals(expectedGenres, actualVideo.getGenres());
-        assertEquals(expectedMembers, actualVideo.getCastmembers());
+        assertEquals(expectedMembers, actualVideo.getCastMembers());
         assertTrue(actualVideo.getVideo().isEmpty());
         assertTrue(actualVideo.getTrailer().isEmpty());
         assertTrue(actualVideo.getBanner().isEmpty());

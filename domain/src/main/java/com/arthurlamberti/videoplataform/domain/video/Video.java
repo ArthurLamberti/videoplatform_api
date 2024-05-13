@@ -83,7 +83,7 @@ public class Video extends AggregateRoot<VideoID> {
 
     @Override
     public void validate(ValidationHandler handler) {
-
+        new VideoValidator(this,handler).validate();
     }
 
     public Optional<ImageMedia> getBanner() {
@@ -150,7 +150,7 @@ public class Video extends AggregateRoot<VideoID> {
         return nonNull(genres) ? Collections.unmodifiableSet(genres) : Collections.emptySet();
     }
 
-    public Set<CastMemberID> getCastmembers() {
+    public Set<CastMemberID> getCastMembers() {
         return nonNull(castmembers) ? Collections.unmodifiableSet(castmembers) : Collections.emptySet();
     }
 
@@ -215,7 +215,7 @@ public class Video extends AggregateRoot<VideoID> {
                 video.getVideo().orElse(null),
                 new HashSet<>(video.getCategories()),
                 new HashSet<>(video.getGenres()),
-                new HashSet<>(video.getCastmembers())
+                new HashSet<>(video.getCastMembers())
         );
     }
 

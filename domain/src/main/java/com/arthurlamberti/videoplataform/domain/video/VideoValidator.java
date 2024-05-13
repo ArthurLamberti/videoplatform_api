@@ -55,7 +55,7 @@ public class VideoValidator extends Validator {
         }
 
         final int length = description.trim().length();
-        if (length > TITLE_MAX_LENGTH) {
+        if (length > DESCRIPTION_MAX_LENGTH) {
             this.validationHandler().append(new Error("'description' must be between 1 and 4000 characters"));
         }
     }
