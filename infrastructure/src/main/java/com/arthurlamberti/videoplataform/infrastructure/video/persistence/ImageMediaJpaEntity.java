@@ -1,10 +1,7 @@
 package com.arthurlamberti.videoplataform.infrastructure.video.persistence;
 
 import com.arthurlamberti.videoplataform.domain.video.ImageMedia;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +10,7 @@ import javax.persistence.Table;
 
 @Table(name = "videos_image_media")
 @Entity(name = "ImageMedia")
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Getter
 @Setter

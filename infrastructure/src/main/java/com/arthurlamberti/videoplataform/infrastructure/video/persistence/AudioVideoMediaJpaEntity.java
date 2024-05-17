@@ -2,6 +2,7 @@ package com.arthurlamberti.videoplataform.infrastructure.video.persistence;
 
 import com.arthurlamberti.videoplataform.domain.video.AudioVideoMedia;
 import com.arthurlamberti.videoplataform.domain.video.MediaStatus;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 
 @Entity(name = "AudioMediaVideo")
 @Table(name = "videos_video_media")
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 public class AudioVideoMediaJpaEntity {
     @Id
