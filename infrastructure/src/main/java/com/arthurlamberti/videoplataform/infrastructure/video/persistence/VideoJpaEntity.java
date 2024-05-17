@@ -62,9 +62,21 @@ public class VideoJpaEntity {
     @JoinColumn(name = "trailer_id")
     private AudioVideoMediaJpaEntity trailer;
 
-    public static VideoJpaEntity from (final Video aVideo) {
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "banner_id")
+    private ImageMediaJpaEntity banner;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "thumbnail_id")
+    private ImageMediaJpaEntity thumbnail;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "thumbnail_half_id")
+    private ImageMediaJpaEntity thumbnailHalf;
+
+    public static VideoJpaEntity from(final Video aVideo) {
         return new VideoJpaEntity(
-                UUID.fromString( aVideo.getId().getValue()),
+                UUID.fromString(aVideo.getId().getValue()),
                 aVideo.getTitle(),
                 aVideo.getDescription(),
                 aVideo.getLaunchedAt().getValue(),
@@ -75,7 +87,10 @@ public class VideoJpaEntity {
                 aVideo.getCreatedAt(),
                 aVideo.getUpdatedAt(),
                 aVideo.getVideo().map(AudioVideoMediaJpaEntity::from).orElse(null),
-                aVideo.getTrailer().map(AudioVideoMediaJpaEntity::from).orElse(null)
+                aVideo.getTrailer().map(AudioVideoMediaJpaEntity::from).orElse(null),
+                aVideo.getBanner().map(ImageMediaJpaEntity::from).orElse(null),
+                aVideo.getThumbnail().map(ImageMediaJpaEntity::from).orElse(null),
+                aVideo.getThumbnailHalf().map(ImageMediaJpaEntity::from).orElse(null)
         );
     }
 
@@ -91,9 +106,9 @@ public class VideoJpaEntity {
                 this.published,
                 this.createdAt,
                 this.updatedAt,
-                null,
-                null,
-                null,
+                Optional.ofNullable(this.banner).map(ImageMediaJpaEntity::toDomain).orElse(null),
+                Optional.ofNullable(this.thumbnail).map(ImageMediaJpaEntity::toDomain).orElse(null),
+                Optional.ofNullable(this.thumbnailHalf).map(ImageMediaJpaEntity::toDomain).orElse(null),
                 Optional.ofNullable(this.trailer).map(AudioVideoMediaJpaEntity::toDomain).orElse(null),
                 Optional.ofNullable(this.video).map(AudioVideoMediaJpaEntity::toDomain).orElse(null),
                 null,
