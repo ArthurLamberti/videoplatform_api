@@ -3,6 +3,7 @@ package application.video.create;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.video.create.CreateVideoCommand;
 import com.arthurlamberti.videoplataform.application.video.create.DefaultCreateVideoUseCase;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryGateway;

@@ -1,7 +1,7 @@
 package com.arthurlamberti.videoplataform.application.castmember.retrieve.get;
 
-import com.arthurlamberti.videoplataform.Fixture;
 import com.arthurlamberti.videoplataform.IntegrationTest;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
@@ -33,7 +33,7 @@ public class GetCastMemberByIdUseCaseIT {
     public void givenAValidId_whenCallsGetCastMember_shouldReturnIt() {
         // given
         final var expectedName = Fixture.name();
-        final var expectedType = Fixture.CastMember.type();
+        final var expectedType = Fixture.CastMembers.type();
 
         final var aMember = CastMember.newMember(expectedName, expectedType);
 

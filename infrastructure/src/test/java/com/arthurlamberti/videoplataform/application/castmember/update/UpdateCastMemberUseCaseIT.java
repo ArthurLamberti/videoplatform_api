@@ -1,7 +1,7 @@
 package com.arthurlamberti.videoplataform.application.castmember.update;
 
-import com.arthurlamberti.videoplataform.Fixture;
 import com.arthurlamberti.videoplataform.IntegrationTest;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
@@ -142,7 +142,7 @@ public class UpdateCastMemberUseCaseIT {
         // given
         final var expectedId = CastMemberID.from("123");
         final var expectedName = Fixture.name();
-        final var expectedType = Fixture.CastMember.type();
+        final var expectedType = Fixture.CastMembers.type();
 
         final var expectedErrorMessage = "CastMember with ID 123 was not found";
 

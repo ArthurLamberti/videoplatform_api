@@ -1,7 +1,7 @@
 package com.arthurlamberti.videoplataform.infrastructure.castmember;
 
-import com.arthurlamberti.videoplataform.Fixture;
 import com.arthurlamberti.videoplataform.MySQLGatewayTest;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;
@@ -16,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static com.arthurlamberti.videoplataform.Fixture.*;
-import static com.arthurlamberti.videoplataform.Fixture.CastMember.*;
+import static com.arthurlamberti.videoplataform.domain.Fixture.CastMembers.type;
+import static com.arthurlamberti.videoplataform.domain.Fixture.name;
 
 @MySQLGatewayTest
 public class CastMemberMySQLGatewayTest {
@@ -37,8 +37,8 @@ public class CastMemberMySQLGatewayTest {
     @Test
     public void givenAValidCastMember_whenCallsCreate_shouldPersistIt() {
         // given
-        final var expectedName = Fixture.name();
-        final var expectedType = Fixture.CastMember.type();
+        final var expectedName = name();
+        final var expectedType = type();
 
         final var aMember = CastMember.newMember(expectedName, expectedType);
         final var expectedId = aMember.getId();

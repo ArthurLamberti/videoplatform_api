@@ -1,7 +1,7 @@
 package com.arthurlamberti.videoplataform.application.castmember.retrieve.list;
 
-import com.arthurlamberti.videoplataform.Fixture;
 import com.arthurlamberti.videoplataform.IntegrationTest;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.pagination.SearchQuery;
@@ -34,8 +34,8 @@ public class ListCastMembersUseCaseIT {
     public void givenAValidQuery_whenCallsListCastMembers_shouldReturnAll() {
         // given
         final var members = List.of(
-                CastMember.newMember(Fixture.name(), Fixture.CastMember.type()),
-                CastMember.newMember(Fixture.name(), Fixture.CastMember.type())
+                CastMember.newMember(Fixture.name(), Fixture.CastMembers.type()),
+                CastMember.newMember(Fixture.name(), Fixture.CastMembers.type())
         );
 
         this.castMemberRepository.saveAllAndFlush(
