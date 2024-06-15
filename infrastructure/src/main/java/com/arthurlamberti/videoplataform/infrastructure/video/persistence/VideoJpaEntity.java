@@ -1,6 +1,8 @@
 package com.arthurlamberti.videoplataform.infrastructure.video.persistence;
 
+import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
+import com.arthurlamberti.videoplataform.domain.genre.GenreID;
 import com.arthurlamberti.videoplataform.domain.video.Rating;
 import com.arthurlamberti.videoplataform.domain.video.Video;
 import com.arthurlamberti.videoplataform.domain.video.VideoID;
@@ -24,7 +26,7 @@ import java.util.stream.Collectors;
 public class VideoJpaEntity {
 
     @Id
-    private UUID id;
+    private String id;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -78,9 +80,16 @@ public class VideoJpaEntity {
     @OneToMany(mappedBy = "video", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<VideoCategoryJpaEntity> categories = new HashSet<>(1);
 
+
+    @OneToMany(mappedBy = "video", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<VideoGenreJpaEntity> genres = new HashSet<>(1);
+
+    @OneToMany(mappedBy = "video", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<VideoCastMemberJpaEntity> castMembers = new HashSet<>(1);
+
     public static VideoJpaEntity from(final Video aVideo) {
         final var entity = new VideoJpaEntity(
-                UUID.fromString(aVideo.getId().getValue()),
+                aVideo.getId().getValue(),
                 aVideo.getTitle(),
                 aVideo.getDescription(),
                 aVideo.getLaunchedAt().getValue(),
@@ -95,15 +104,27 @@ public class VideoJpaEntity {
                 aVideo.getBanner().map(ImageMediaJpaEntity::from).orElse(null),
                 aVideo.getThumbnail().map(ImageMediaJpaEntity::from).orElse(null),
                 aVideo.getThumbnailHalf().map(ImageMediaJpaEntity::from).orElse(null),
+                new HashSet<>(1),
+                new HashSet<>(1),
                 new HashSet<>(1)
         );
 
         aVideo.getCategories().forEach(entity::addCategory);
+        aVideo.getGenres().forEach(entity::addGenre);
+        aVideo.getCastMembers().forEach(entity::addCastMember);
         return entity;
     }
 
     private void addCategory(final CategoryID categoryID) {
         this.categories.add(VideoCategoryJpaEntity.from(this, categoryID));
+    }
+
+    private void addGenre(final GenreID genreID) {
+        this.genres.add(VideoGenreJpaEntity.from(this, genreID));
+    }
+
+    private void addCastMember(final CastMemberID genreID) {
+        this.castMembers.add(VideoCastMemberJpaEntity.from(this, genreID));
     }
 
     public Video toAggregate() {
@@ -124,8 +145,8 @@ public class VideoJpaEntity {
                 Optional.ofNullable(this.trailer).map(AudioVideoMediaJpaEntity::toDomain).orElse(null),
                 Optional.ofNullable(this.video).map(AudioVideoMediaJpaEntity::toDomain).orElse(null),
                 this.categories.stream().map(it -> CategoryID.from(it.getId().getCategoryId())).collect(Collectors.toSet()),
-                null,
-                null
+                this.genres.stream().map(it -> GenreID.from(it.getId().getGenreId())).collect(Collectors.toSet()),
+                this.castMembers.stream().map(it -> CastMemberID.from(it.getId().getCastMemberId())).collect(Collectors.toSet())
         );
     }
 

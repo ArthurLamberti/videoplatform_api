@@ -1,9 +1,9 @@
 package application.castmember.update;
 
-import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.castmember.update.DefaultUpdateCastMemberUseCase;
 import com.arthurlamberti.videoplataform.application.castmember.update.UpdateCastMemberCommand;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;

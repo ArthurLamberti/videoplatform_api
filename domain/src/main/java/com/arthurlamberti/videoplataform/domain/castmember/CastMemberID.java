@@ -1,6 +1,7 @@
 package com.arthurlamberti.videoplataform.domain.castmember;
 
 import com.arthurlamberti.videoplataform.domain.Identifier;
+import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -16,15 +17,11 @@ public class CastMemberID extends Identifier {
     }
 
     public static CastMemberID unique() {
-        return CastMemberID.from(UUID.randomUUID());
+        return CastMemberID.from(IdUtils.uuid());
     }
 
     public static CastMemberID from(final String anId) {
         return new CastMemberID(anId);
-    }
-
-    public static CastMemberID from(final UUID uuid) {
-        return new CastMemberID(uuid.toString().toLowerCase());
     }
 
     @Override

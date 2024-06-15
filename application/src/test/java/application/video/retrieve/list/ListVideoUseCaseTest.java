@@ -1,6 +1,5 @@
 package application.video.retrieve.list;
 
-import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.genre.retrieve.list.GenreListOutput;
 import com.arthurlamberti.videoplataform.application.video.retrieve.list.DefaultListVideosUseCase;

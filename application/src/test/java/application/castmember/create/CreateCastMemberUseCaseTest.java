@@ -1,9 +1,9 @@
 package application.castmember.create;
 
-import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.castmember.create.CreateCastMemberCommand;
 import com.arthurlamberti.videoplataform.application.castmember.create.DefaultCreateCastMemberUseCase;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;

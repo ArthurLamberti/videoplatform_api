@@ -1,6 +1,7 @@
 package com.arthurlamberti.videoplataform.domain.category;
 
 import com.arthurlamberti.videoplataform.domain.Identifier;
+import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -15,7 +16,7 @@ public class CategoryID extends Identifier {
     }
 
     public static CategoryID unique() {
-        return CategoryID.from(UUID.randomUUID());
+        return CategoryID.from(IdUtils.uuid());
     }
 
     public static CategoryID from(final String anId) {

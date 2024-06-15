@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity(name = "VideoCategory")
-@Table(name = "videos_category")
+@Table(name = "videos_categories")
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
@@ -22,7 +22,7 @@ public class VideoCategoryJpaEntity {
 
     public static VideoCategoryJpaEntity from(final VideoJpaEntity video, final CategoryID categoryID) {
         return new VideoCategoryJpaEntity(
-                VideoCategoryID.from(video.getId(), UUID.fromString(categoryID.getValue())),
+                VideoCategoryID.from(video.getId(), categoryID.getValue()),
                 video
         );
     }

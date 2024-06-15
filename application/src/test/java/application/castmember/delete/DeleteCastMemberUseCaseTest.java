@@ -1,8 +1,8 @@
 package application.castmember.delete;
 
-import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.castmember.delete.DefaultDeleteCastMemberUseCase;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;

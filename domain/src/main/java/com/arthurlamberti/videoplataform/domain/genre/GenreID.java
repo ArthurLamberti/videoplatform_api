@@ -1,6 +1,7 @@
 package com.arthurlamberti.videoplataform.domain.genre;
 
 import com.arthurlamberti.videoplataform.domain.Identifier;
+import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -18,11 +19,7 @@ public class GenreID extends Identifier {
     }
 
     public static GenreID unique() {
-        return GenreID.from(UUID.randomUUID());
-    }
-
-    public static GenreID from(final UUID randomUUID) {
-        return new GenreID(randomUUID.toString().toLowerCase());
+        return GenreID.from(IdUtils.uuid());
     }
 
     public static GenreID from(final String anId) {

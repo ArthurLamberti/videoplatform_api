@@ -1,6 +1,5 @@
 package application.video.create;
 
-import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.video.create.CreateVideoCommand;
 import com.arthurlamberti.videoplataform.application.video.create.DefaultCreateVideoUseCase;
@@ -12,6 +11,7 @@ import com.arthurlamberti.videoplataform.domain.exception.InternalErrorException
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
 import com.arthurlamberti.videoplataform.domain.genre.GenreGateway;
 import com.arthurlamberti.videoplataform.domain.genre.GenreID;
+import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
 import com.arthurlamberti.videoplataform.domain.video.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -987,7 +987,7 @@ public class CreateVideoUseCaseTest extends UseCaseTest {
     private void mockImageMedia() {
         when(mediaResourceGateway.storeImage(any(), any())).thenAnswer(t -> {
             final var resource = t.getArgument(1, Resource.class);
-            return ImageMedia.with(UUID.randomUUID().toString(), resource.getName(), "/img");
+            return ImageMedia.with( IdUtils.uuid(), resource.getName(), "/img");
         });
     }
 
@@ -995,7 +995,7 @@ public class CreateVideoUseCaseTest extends UseCaseTest {
         when(mediaResourceGateway.storeAudioVideo(any(), any())).thenAnswer(t -> {
             final var resource = t.getArgument(1, Resource.class);
             return AudioVideoMedia.with(
-                    UUID.randomUUID().toString(),
+                    IdUtils.uuid(),
                     resource.getName(),
                     "/img",
                     "",

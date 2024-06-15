@@ -8,20 +8,20 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Embeddable
-@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@EqualsAndHashCode
 @Getter
 @Setter
-@EqualsAndHashCode
-public class VideoCategoryID implements Serializable {
+public class VideoGenreID implements Serializable {
 
     @Column(name = "video_id", nullable = false)
     private String videoId;
 
-    @Column(name = "category_id", nullable = false)
-    private String categoryId;
+    @Column(name = "genre_id", nullable = false)
+    private String genreId;
 
-    public static VideoCategoryID from(final String videoId, final String categoryId) {
-        return new VideoCategoryID(videoId, categoryId);
+    public static VideoGenreID from (final String videoId, final String genreId){
+        return new VideoGenreID(videoId, genreId);
     }
 }

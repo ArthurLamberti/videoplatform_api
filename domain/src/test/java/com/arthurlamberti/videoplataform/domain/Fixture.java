@@ -1,4 +1,5 @@
-package application;
+package com.arthurlamberti.videoplataform.domain;
+
 
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;
@@ -11,13 +12,11 @@ import com.github.javafaker.Faker;
 import io.vavr.API;
 
 import java.time.Year;
-import java.util.Arrays;
 import java.util.Set;
 
 import static io.vavr.API.*;
 
 public final class Fixture {
-
 
     private static final Faker FAKER = new Faker();
 
@@ -26,21 +25,25 @@ public final class Fixture {
     }
 
     public static Integer year() {
-        return FAKER.random().nextInt(2000, 2024);
+        return FAKER.random().nextInt(2020, 2030);
     }
 
     public static Double duration() {
-        return (FAKER.random().nextInt(20, 1200)) / 10.0; //return a double between 2.0 and 120.0
+        return FAKER.options().option(120.0, 15.5, 35.5, 10.0, 2.0);
     }
-
 
     public static boolean bool() {
         return FAKER.bool().bool();
     }
 
     public static String title() {
-        return FAKER.harryPotter().book();
+        return FAKER.options().option(
+                "System Design no Mercado Livre na prática",
+                "Não cometa esses erros ao trabalhar com Microsserviços",
+                "Testes de Mutação. Você não testa seu software corretamente"
+        );
     }
+
 
     public static Video video() {
         return Video.newVideo(
@@ -57,11 +60,24 @@ public final class Fixture {
         );
     }
 
+    public static final class Categories {
+
+        private static final Category LESSONS =
+                Category.newCategory("Lessons", "Some description", true);
+
+        public static Category lessons() {
+            return LESSONS.clone();
+        }
+    }
+
     public static final class CastMembers {
-        private static final CastMember JOHNDOE = CastMember.newMember("John Doe", CastMemberType.ACTOR);
+
+
+        private static final CastMember JOHNDOE =
+                CastMember.newMember("John Doe", CastMemberType.ACTOR);
 
         public static CastMemberType type() {
-            return FAKER.options().option(CastMemberType.ACTOR, CastMemberType.DIRECTOR);
+            return FAKER.options().option(CastMemberType.values());
         }
 
         public static CastMember johnDoe() {
@@ -69,23 +85,25 @@ public final class Fixture {
         }
     }
 
-    public static final class Categories {
-        private static final Category LESSONS = Category.newCategory("Lessons", "Some description", true);
-
-        public static Category lessons() {
-            return LESSONS.clone();
-        }
-    }
-
     public static final class Genres {
-        private static final Genre TECH = Genre.newGenre("Technology", true);
+
+        private static final Genre TECH =
+                Genre.newGenre("Technology", true);
+
+        private static final Genre BUSINESS =
+                Genre.newGenre("Business", true);
 
         public static Genre tech() {
             return Genre.with(TECH);
         }
+
+        public static Genre business() {
+            return Genre.with(BUSINESS);
+        }
     }
 
     public static final class Videos {
+
         private static final Video SYSTEM_DESIGN = Video.newVideo(
                 "System Design no Mercado Livre na prática",
                 description(),
@@ -102,12 +120,9 @@ public final class Fixture {
         public static Video systemDesign() {
             return Video.with(SYSTEM_DESIGN);
         }
+
         public static Rating rating() {
             return FAKER.options().option(Rating.values());
-        }
-
-        public static String description(Integer... qtdCharacters) {
-            return Faker.instance().lorem().characters(qtdCharacters.length > 0 ? qtdCharacters[0] : 300);
         }
 
         public static Resource resource(final Resource.Type type) {
@@ -117,6 +132,21 @@ public final class Fixture {
             );
             final byte[] content = FAKER.lorem().characters(10).getBytes();
             return Resource.with(content, contentType, type.name().toLowerCase(), type);
+        }
+
+        public static String description() {
+            return FAKER.options().option(
+                    """
+                            Disclaimer: o estudo de caso apresentado tem fins educacionais e representa nossas opiniões pessoais.
+                            Esse vídeo faz parte da Imersão Full Stack && Full Cycle.
+                            Para acessar todas as aulas, lives e desafios, acesse:
+                            https://imersao.fullcycle.com.br/
+                            """,
+                    """
+                            Nesse vídeo você entenderá o que é DTO (Data Transfer Object), quando e como utilizar no dia a dia, 
+                            bem como sua importância para criar aplicações com alta qualidade.
+                            """
+            );
         }
     }
 }

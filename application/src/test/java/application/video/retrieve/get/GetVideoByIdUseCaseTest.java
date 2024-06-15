@@ -1,9 +1,10 @@
 package application.video.retrieve.get;
 
-import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.video.retrieve.get.DefaultGetVideoByIdUseCase;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.exception.NotFoundException;
+import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
 import com.arthurlamberti.videoplataform.domain.video.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,6 @@ import java.time.Year;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -121,7 +121,7 @@ public class GetVideoByIdUseCaseTest extends UseCaseTest {
     }
 
     private AudioVideoMedia audioVideo(final Resource.Type type) {
-        final var checksum = UUID.randomUUID().toString();
+        final var checksum = IdUtils.uuid();
         return AudioVideoMedia.with(
                 checksum,
                 type.name().toLowerCase(),
@@ -132,7 +132,7 @@ public class GetVideoByIdUseCaseTest extends UseCaseTest {
     }
 
     private ImageMedia image(final Resource.Type type) {
-        final var checksum = UUID.randomUUID().toString();
+        final var checksum =  IdUtils.uuid();
         return ImageMedia.with(
                 checksum,
                 type.name().toLowerCase(),

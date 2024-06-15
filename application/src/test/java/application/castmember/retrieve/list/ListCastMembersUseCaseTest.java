@@ -1,9 +1,9 @@
 package application.castmember.retrieve.list;
 
-import application.Fixture;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.castmember.retrieve.list.DefaultListCastMembersUsecase;
 import com.arthurlamberti.videoplataform.application.castmember.retrieve.list.ListCastMembersOutput;
+import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.pagination.Pagination;

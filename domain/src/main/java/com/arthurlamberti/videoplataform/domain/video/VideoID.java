@@ -2,6 +2,7 @@ package com.arthurlamberti.videoplataform.domain.video;
 
 import com.arthurlamberti.videoplataform.domain.Identifier;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
+import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -16,15 +17,11 @@ public class VideoID extends Identifier {
     }
 
     public static VideoID unique() {
-        return VideoID.from(UUID.randomUUID());
+        return VideoID.from(IdUtils.uuid());
     }
 
     public static VideoID from(final String anId) {
         return new VideoID(anId.toLowerCase());
-    }
-
-    public static VideoID from(final UUID uuid) {
-        return from(uuid.toString());
     }
 
     @Override
