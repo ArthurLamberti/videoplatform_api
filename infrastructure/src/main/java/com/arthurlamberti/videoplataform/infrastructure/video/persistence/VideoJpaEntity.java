@@ -3,6 +3,7 @@ package com.arthurlamberti.videoplataform.infrastructure.video.persistence;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
 import com.arthurlamberti.videoplataform.domain.genre.GenreID;
+import com.arthurlamberti.videoplataform.domain.utils.CollectionsUtils;
 import com.arthurlamberti.videoplataform.domain.video.Rating;
 import com.arthurlamberti.videoplataform.domain.video.Video;
 import com.arthurlamberti.videoplataform.domain.video.VideoID;
@@ -45,7 +46,6 @@ public class VideoJpaEntity {
 
 
     @Column(name = "rating")
-    @Enumerated(EnumType.STRING)
     private Rating rating;
 
     @Column(name = "duration", precision = 2)
@@ -148,6 +148,18 @@ public class VideoJpaEntity {
                 this.genres.stream().map(it -> GenreID.from(it.getId().getGenreId())).collect(Collectors.toSet()),
                 this.castMembers.stream().map(it -> CastMemberID.from(it.getId().getCastMemberId())).collect(Collectors.toSet())
         );
+    }
+
+    public Set<CategoryID> getCategoriesID() {
+        return CollectionsUtils.mapTo(getCategories(), it -> CategoryID.from(it.getId().getCategoryId()));
+    }
+
+    public Set<GenreID> getGenresID() {
+        return CollectionsUtils.mapTo(getGenres(), it -> GenreID.from(it.getId().getGenreId()));
+    }
+
+    public Set<CastMemberID> getCastMembersID() {
+        return CollectionsUtils.mapTo(getCastMembers(), it -> CastMemberID.from(it.getId().getCastMemberId()));
     }
 
 }

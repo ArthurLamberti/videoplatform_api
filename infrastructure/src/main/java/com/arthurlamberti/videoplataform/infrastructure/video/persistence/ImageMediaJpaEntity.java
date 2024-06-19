@@ -19,6 +19,9 @@ public class ImageMediaJpaEntity {
     @Id
     private String id;
 
+    @Column(name = "checksum", nullable = false)
+    private String checksum;
+
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -27,6 +30,7 @@ public class ImageMediaJpaEntity {
 
     public static ImageMediaJpaEntity from(final ImageMedia imageMedia) {
         return new ImageMediaJpaEntity(
+                imageMedia.getId(),
                 imageMedia.getChecksum(),
                 imageMedia.getName(),
                 imageMedia.getLocation()
@@ -36,6 +40,7 @@ public class ImageMediaJpaEntity {
     public ImageMedia toDomain() {
         return ImageMedia.with(
                 this.id,
+                this.getChecksum(),
                 this.name,
                 this.filePath
         );
