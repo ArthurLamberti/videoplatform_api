@@ -61,7 +61,7 @@ public class DefaultVideoGateway implements VideoGateway {
                 Sort.by(Sort.Direction.fromString(aQuery.direction()), aQuery.sort())
         );
         final var actualPage = this.videoRepository.findAll(
-                SqlUtils.like(aQuery.terms()),
+                SqlUtils.like(SqlUtils.upper(aQuery.terms())),
                 CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(aQuery.castMembers(), Identifier::getValue)),
                 CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(aQuery.categories(), Identifier::getValue)),
                 CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(aQuery.genres(), Identifier::getValue)),

@@ -64,9 +64,14 @@ public final class Fixture {
 
         private static final Category LESSONS =
                 Category.newCategory("Lessons", "Some description", true);
+        private static final Category LIVES =
+                Category.newCategory("Lives", "Some live description", true);
 
         public static Category lessons() {
             return LESSONS.clone();
+        }
+
+        public static Category lives() {return LIVES.clone();
         }
     }
 

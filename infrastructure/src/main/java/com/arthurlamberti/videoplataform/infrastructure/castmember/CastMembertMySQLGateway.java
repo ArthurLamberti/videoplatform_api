@@ -3,6 +3,7 @@ package com.arthurlamberti.videoplataform.infrastructure.castmember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
+import com.arthurlamberti.videoplataform.domain.genre.GenreID;
 import com.arthurlamberti.videoplataform.domain.pagination.Pagination;
 import com.arthurlamberti.videoplataform.domain.pagination.SearchQuery;
 import com.arthurlamberti.videoplataform.infrastructure.castmember.persistence.CastMemberJpaEntity;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import static java.util.Objects.requireNonNull;
 
@@ -70,8 +72,13 @@ public class CastMembertMySQLGateway implements CastMemberGateway {
     }
 
     @Override
-    public List<CastMemberID> existsByIds(Iterable<CastMemberID> ids) {
-        throw new UnsupportedOperationException();
+    public List<CastMemberID> existsByIds(Iterable<CastMemberID> castMemberIDS) {
+        final var ids = StreamSupport.stream(castMemberIDS.spliterator(), false)
+                .map(CastMemberID::getValue)
+                .toList();
+        return this.castMemberRepository.existsByIds(ids).stream()
+                .map(CastMemberID::from)
+                .toList();
     }
 
     private CastMember save(final CastMember aCastMember) {
