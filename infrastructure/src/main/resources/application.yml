@@ -11,6 +11,21 @@ server:
       worker: 64 # Generally this should be reasonably high, at least 10 per CPU core: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
       io: 4 # One IO thread per CPU core is a reasonable default: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
 
+google:
+  cloud:
+    credentials: ${GOOGLE_CLOUD_CREDENTIALS}
+    projectId: ${GOOGLE_CLOUD_PROJECT_ID}
+    storage:
+      catalogo-video:
+       bucket: fc3_catalogo_video
+       connect-timeout: 1000
+       read-timeout: 2000
+       retry-delay: 50
+       retry-max-delay: 50
+       retry-max-attempts: 2
+       retry-multiplier: 1.0
+
+
 spring:
   datasource:
     url: jdbc:mysql://${mysql.url}/${mysql.schema}?useSSL=true&serverTimezone=UTC&characterEncoding=UTF-8
@@ -34,3 +49,7 @@ spring:
       "[hibernate.connection.provider_disables_autocommit]": true
       # Para aumentar a performance ao máximo, desabilitamos o auto-commit e o open-in-view.
       # https://vladmihalcea.com/why-you-should-always-use-hibernate-connection-provider_disables_autocommit-for-resource-local-jpa-transactions/
+logging:
+  level:
+    root: info
+    com.arthurlamberti.videoplataform : debug

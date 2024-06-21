@@ -32,6 +32,10 @@ dependencies {
     implementation(project(":application"))
 
     implementation('io.vavr:vavr:0.10.4')
+    // https://mvnrepository.com/artifact/com.google.cloud/google-cloud-storage
+    implementation('com.google.cloud:google-cloud-storage:2.40.0')
+    implementation('com.google.guava:guava:31.1-jre')
+
 
     implementation('mysql:mysql-connector-java')
 
