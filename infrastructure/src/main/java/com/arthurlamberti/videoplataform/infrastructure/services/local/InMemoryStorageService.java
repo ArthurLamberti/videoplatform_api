@@ -1,6 +1,6 @@
 package com.arthurlamberti.videoplataform.infrastructure.services.local;
 
-import com.arthurlamberti.videoplataform.domain.video.Resource;
+import com.arthurlamberti.videoplataform.domain.resource.Resource;
 import com.arthurlamberti.videoplataform.infrastructure.services.StorageService;
 
 import java.util.Collection;

@@ -10,6 +10,8 @@ import com.arthurlamberti.videoplataform.domain.exception.InternalErrorException
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
 import com.arthurlamberti.videoplataform.domain.genre.GenreGateway;
 import com.arthurlamberti.videoplataform.domain.genre.GenreID;
+import com.arthurlamberti.videoplataform.domain.resource.VideoMediaType;
+import com.arthurlamberti.videoplataform.domain.resource.VideoResource;
 import com.arthurlamberti.videoplataform.domain.validation.Error;
 import com.arthurlamberti.videoplataform.domain.validation.ValidationHandler;
 import com.arthurlamberti.videoplataform.domain.validation.handler.Notification;
@@ -87,23 +89,23 @@ public class DefaultCreateVideoUseCase extends CreateVideoUseCase {
         final var anId = aVideo.getId();
         try {
             final var aVideoMedia = aCommand.getVideo()
-                    .map(it -> this.mediaResourceGateway.storeAudioVideo(anId, it))
+                    .map(it -> this.mediaResourceGateway.storeAudioVideo(anId, VideoResource.with(it, VideoMediaType.VIDEO)))
                     .orElse(null);
 
             final var aTrailerMedia = aCommand.getTrailer()
-                    .map(it -> this.mediaResourceGateway.storeAudioVideo(anId, it))
+                    .map(it -> this.mediaResourceGateway.storeAudioVideo(anId, VideoResource.with(it, VideoMediaType.TRAILER)))
                     .orElse(null);
 
             final var aBannerMedia = aCommand.getBanner()
-                    .map(it -> this.mediaResourceGateway.storeImage(anId, it))
+                    .map(it -> this.mediaResourceGateway.storeImage(anId, VideoResource.with(it, VideoMediaType.BANNER)))
                     .orElse(null);
 
             final var aThumbMedia = aCommand.getThumbnail()
-                    .map(it -> this.mediaResourceGateway.storeImage(anId, it))
+                    .map(it -> this.mediaResourceGateway.storeImage(anId, VideoResource.with(it, VideoMediaType.THUMBNAIL)))
                     .orElse(null);
 
             final var aThumbHalfMedia = aCommand.getThumbailHalf()
-                    .map(it -> this.mediaResourceGateway.storeImage(anId, it))
+                    .map(it -> this.mediaResourceGateway.storeImage(anId, VideoResource.with(it, VideoMediaType.THUMBNAIL_HALF)))
                     .orElse(null);
 
             return this.videoGateway.create(

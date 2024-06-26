@@ -1,6 +1,6 @@
 package com.arthurlamberti.videoplataform.infrastructure.services.impl;
 
-import com.arthurlamberti.videoplataform.domain.video.Resource;
+import com.arthurlamberti.videoplataform.domain.resource.Resource;
 import com.arthurlamberti.videoplataform.infrastructure.services.StorageService;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
@@ -24,7 +24,7 @@ public class GCStorageImpl implements StorageService {
     public void store(final String name, final Resource resource) {
         final var info = BlobInfo.newBuilder(this.bucket, name)
                 .setContentDisposition(resource.getContentType())
-                .setCrc32cFromHexString("")
+                .setCrc32cFromHexString(resource.getChecksum())
                 .build();
         this.storage.create(info, resource.getContent());
     }
@@ -36,7 +36,7 @@ public class GCStorageImpl implements StorageService {
                         blob.getContent(),
                         blob.getContentType(),
                         name,
-                        null
+                        blob.getCrc32cToHexString()
                 ));
     }
 

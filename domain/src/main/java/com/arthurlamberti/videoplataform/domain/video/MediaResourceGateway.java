@@ -1,9 +1,12 @@
 package com.arthurlamberti.videoplataform.domain.video;
 
-public interface MediaResourceGateway {
-    AudioVideoMedia storeAudioVideo(VideoID anId, Resource resource);
+import com.arthurlamberti.videoplataform.domain.resource.Resource;
+import com.arthurlamberti.videoplataform.domain.resource.VideoResource;
 
-    ImageMedia storeImage(VideoID anId, Resource resource);
+public interface MediaResourceGateway {
+    AudioVideoMedia storeAudioVideo(VideoID anId, VideoResource resource);
+
+    ImageMedia storeImage(VideoID anId, VideoResource resource);
 
     void clearResources(VideoID anId);
 }

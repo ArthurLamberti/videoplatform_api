@@ -5,8 +5,12 @@ import com.arthurlamberti.videoplataform.domain.castmember.CastMember;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberType;
 import com.arthurlamberti.videoplataform.domain.category.Category;
 import com.arthurlamberti.videoplataform.domain.genre.Genre;
+import com.arthurlamberti.videoplataform.domain.resource.VideoMediaType;
+import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
+import com.arthurlamberti.videoplataform.domain.video.AudioVideoMedia;
+import com.arthurlamberti.videoplataform.domain.video.ImageMedia;
 import com.arthurlamberti.videoplataform.domain.video.Rating;
-import com.arthurlamberti.videoplataform.domain.video.Resource;
+import com.arthurlamberti.videoplataform.domain.resource.Resource;
 import com.arthurlamberti.videoplataform.domain.video.Video;
 import com.github.javafaker.Faker;
 import io.vavr.API;
@@ -44,6 +48,9 @@ public final class Fixture {
         );
     }
 
+    public static String checksum() {
+        return "03fe62de";
+    }
 
     public static Video video() {
         return Video.newVideo(
@@ -130,13 +137,14 @@ public final class Fixture {
             return FAKER.options().option(Rating.values());
         }
 
-        public static Resource resource(final Resource.Type type) {
+        public static Resource resource(final VideoMediaType type) {
             final String contentType = API.Match(type).of(
-                    Case($(List(Resource.Type.VIDEO, Resource.Type.TRAILER)::contains), "video/mp4"),
+                    Case($(List(VideoMediaType.VIDEO, VideoMediaType.TRAILER)::contains), "video/mp4"),
                     Case($(), "image/jpg")
             );
+            final String checksum = IdUtils.uuid();
             final byte[] content = FAKER.lorem().characters(10).getBytes();
-            return Resource.with(content, contentType, type.name().toLowerCase(), type);
+            return Resource.with(content, contentType, type.name().toLowerCase(), checksum);
         }
 
         public static String description() {
@@ -151,6 +159,24 @@ public final class Fixture {
                             Nesse vídeo você entenderá o que é DTO (Data Transfer Object), quando e como utilizar no dia a dia, 
                             bem como sua importância para criar aplicações com alta qualidade.
                             """
+            );
+        }
+
+        public static AudioVideoMedia audioVideo(final VideoMediaType type) {
+            final var checksum = Fixture.checksum();
+            return AudioVideoMedia.with(
+                    checksum,
+                    type.name().toLowerCase(),
+                    "/videos/" + checksum
+            );
+        }
+
+        public static ImageMedia image(final VideoMediaType type) {
+            final var checksum = Fixture.checksum();
+            return ImageMedia.with(
+                    checksum,
+                    type.name().toLowerCase(),
+                    "/images/" + checksum
             );
         }
     }

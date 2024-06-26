@@ -1,17 +1,12 @@
 package com.arthurlamberti.videoplataform.application.video.retrieve.get;
 
 import com.arthurlamberti.videoplataform.domain.Identifier;
-import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
-import com.arthurlamberti.videoplataform.domain.category.CategoryID;
-import com.arthurlamberti.videoplataform.domain.genre.GenreID;
 import com.arthurlamberti.videoplataform.domain.video.AudioVideoMedia;
 import com.arthurlamberti.videoplataform.domain.video.ImageMedia;
-import com.arthurlamberti.videoplataform.domain.video.Resource;
 import com.arthurlamberti.videoplataform.domain.video.Video;
 
 import java.time.Instant;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static com.arthurlamberti.videoplataform.domain.utils.CollectionsUtils.mapTo;
 

@@ -1,6 +1,6 @@
 package com.arthurlamberti.videoplataform.application.video.update;
 
-import com.arthurlamberti.videoplataform.domain.video.Resource;
+import com.arthurlamberti.videoplataform.domain.resource.Resource;
 
 import java.util.Optional;
 import java.util.Set;
