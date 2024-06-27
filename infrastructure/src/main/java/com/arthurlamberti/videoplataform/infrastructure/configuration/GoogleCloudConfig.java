@@ -1,7 +1,7 @@
 package com.arthurlamberti.videoplataform.infrastructure.configuration;
 
-import com.arthurlamberti.videoplataform.infrastructure.configuration.properties.GoogleCloudProperties;
-import com.arthurlamberti.videoplataform.infrastructure.configuration.properties.GoogleStorageProperties;
+import com.arthurlamberti.videoplataform.infrastructure.configuration.properties.google.GoogleCloudProperties;
+import com.arthurlamberti.videoplataform.infrastructure.configuration.properties.google.GoogleStorageProperties;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;

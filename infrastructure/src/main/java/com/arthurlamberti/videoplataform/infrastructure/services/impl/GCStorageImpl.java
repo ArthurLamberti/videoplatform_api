@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
+
 public class GCStorageImpl implements StorageService {
     private final String bucket;
     private final Storage storage;
@@ -21,8 +22,8 @@ public class GCStorageImpl implements StorageService {
     }
 
     @Override
-    public void store(final String name, final Resource resource) {
-        final var info = BlobInfo.newBuilder(this.bucket, name)
+    public void store(final String id, final Resource resource) {
+        final var info = BlobInfo.newBuilder(this.bucket, id)
                 .setContentDisposition(resource.getContentType())
                 .setCrc32cFromHexString(resource.getChecksum())
                 .build();

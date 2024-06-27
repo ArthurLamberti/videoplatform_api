@@ -21,7 +21,7 @@ public class InMemoryStorageService implements StorageService {
         return this.storage;
     }
 
-    public void reset() {
+    public void clear() {
         this.storage.clear();
     }
 

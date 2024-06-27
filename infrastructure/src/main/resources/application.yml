@@ -25,6 +25,11 @@ google:
        retry-max-attempts: 2
        retry-multiplier: 1.0
 
+storage:
+  catalogo-videos:
+    location-pattern: videoId-{videoId}
+    filename-pattern: type-{type}
+
 
 spring:
   datasource:

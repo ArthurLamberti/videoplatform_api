@@ -1,8 +1,7 @@
-package com.arthurlamberti.videoplataform.infrastructure.configuration.properties;
+package com.arthurlamberti.videoplataform.infrastructure.configuration.properties.google;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;

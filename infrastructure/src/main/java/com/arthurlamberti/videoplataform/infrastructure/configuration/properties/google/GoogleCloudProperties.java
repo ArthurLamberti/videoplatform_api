@@ -1,4 +1,4 @@
-package com.arthurlamberti.videoplataform.infrastructure.configuration.properties;
+package com.arthurlamberti.videoplataform.infrastructure.configuration.properties.google;
 
 import lombok.Getter;
 import lombok.Setter;
