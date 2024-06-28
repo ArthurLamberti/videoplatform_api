@@ -10,6 +10,8 @@ import com.arthurlamberti.videoplataform.domain.video.VideoID;
 import com.arthurlamberti.videoplataform.infrastructure.configuration.properties.storage.StorageProperties;
 import com.arthurlamberti.videoplataform.infrastructure.services.StorageService;
 
+import java.util.Optional;
+
 public class DefaultMediaResourceGateway implements MediaResourceGateway {
 
     private final String filenamePattern;
@@ -38,7 +40,7 @@ public class DefaultMediaResourceGateway implements MediaResourceGateway {
         final var filepath = filepath(anId, videoResource);
         final var resource = videoResource.getResource();
         store(filepath, resource);
-        
+
         return ImageMedia.with(resource.getChecksum(), resource.getName(), filepath);
     }
 
@@ -46,6 +48,11 @@ public class DefaultMediaResourceGateway implements MediaResourceGateway {
     public void clearResources(VideoID anId) {
         final var ids = this.storageService.list(folder(anId));
         this.storageService.deleteAll(ids);
+    }
+
+    @Override
+    public Optional<Resource> getResource(VideoID anId, VideoMediaType type) {
+        return Optional.empty();
     }
 
     private String filename(final VideoMediaType aType) {
