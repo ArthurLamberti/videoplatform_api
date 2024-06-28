@@ -19,6 +19,9 @@ public class VideoResource extends ValueObject {
     public static VideoResource with(final Resource resource, final VideoMediaType aType) {
         return new VideoResource(aType, resource);
     }
+    public static VideoResource with(final VideoMediaType type, final Resource resource) {
+        return new VideoResource(type, resource);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
