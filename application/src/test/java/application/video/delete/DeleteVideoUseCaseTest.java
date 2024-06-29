@@ -3,6 +3,7 @@ package application.video.delete;
 import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.video.delete.DefaultDeleteVideoUseCase;
 import com.arthurlamberti.videoplataform.domain.exception.InternalErrorException;
+import com.arthurlamberti.videoplataform.domain.video.MediaResourceGateway;
 import com.arthurlamberti.videoplataform.domain.video.VideoGateway;
 import com.arthurlamberti.videoplataform.domain.video.VideoID;
 import org.junit.jupiter.api.Test;
@@ -25,15 +26,19 @@ public class DeleteVideoUseCaseTest extends UseCaseTest {
     @Mock
     private VideoGateway videoGateway;
 
+    @Mock
+    private MediaResourceGateway mediaResourceGateway;
+
     @Override
     protected List<Object> getMocks() {
-        return List.of(defaultDeleteVideoUseCase);
+        return List.of(videoGateway, mediaResourceGateway);
     }
 
     @Test
     public void givenAValidID_whenCallsDeleteVideo_shouldDeleteIt() {
         final var expectedId = VideoID.unique();
         doNothing().when(videoGateway).deleteById(any());
+        doNothing().when(mediaResourceGateway).clearResources(any());
         assertDoesNotThrow(()->this.defaultDeleteVideoUseCase.execute(expectedId.getValue()));
         verify(videoGateway).deleteById(eq(expectedId));
     }

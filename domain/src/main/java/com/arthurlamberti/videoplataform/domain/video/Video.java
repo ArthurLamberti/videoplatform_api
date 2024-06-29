@@ -4,6 +4,7 @@ import com.arthurlamberti.videoplataform.domain.AggregateRoot;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
 import com.arthurlamberti.videoplataform.domain.genre.GenreID;
+import com.arthurlamberti.videoplataform.domain.resource.VideoMediaType;
 import com.arthurlamberti.videoplataform.domain.utils.InstantUtils;
 import com.arthurlamberti.videoplataform.domain.validation.ValidationHandler;
 import lombok.Getter;
@@ -285,5 +286,29 @@ public class Video extends AggregateRoot<VideoID> {
                 genres,
                 castmembers
         );
+    }
+
+    public Video processing(final VideoMediaType aType) {
+        if (VideoMediaType.VIDEO == aType) {
+            getVideo()
+                    .ifPresent(media -> setVideo(media.processing()));
+        } else if (VideoMediaType.TRAILER == aType) {
+            getTrailer()
+                    .ifPresent(media -> setTrailer(media.processing()));
+        }
+
+        return this;
+    }
+
+    public Video completed(final VideoMediaType aType, final String encodedPath) {
+        if (VideoMediaType.VIDEO == aType) {
+            getVideo()
+                    .ifPresent(media -> setVideo(media.completed(encodedPath)));
+        } else if (VideoMediaType.TRAILER == aType) {
+            getTrailer()
+                    .ifPresent(media -> setTrailer(media.completed(encodedPath)));
+        }
+
+        return this;
     }
 }
