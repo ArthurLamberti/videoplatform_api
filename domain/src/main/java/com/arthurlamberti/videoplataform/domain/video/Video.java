@@ -3,6 +3,7 @@ package com.arthurlamberti.videoplataform.domain.video;
 import com.arthurlamberti.videoplataform.domain.AggregateRoot;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
+import com.arthurlamberti.videoplataform.domain.events.DomainEvent;
 import com.arthurlamberti.videoplataform.domain.genre.GenreID;
 import com.arthurlamberti.videoplataform.domain.resource.VideoMediaType;
 import com.arthurlamberti.videoplataform.domain.utils.InstantUtils;
@@ -12,10 +13,7 @@ import lombok.Setter;
 
 import java.time.Instant;
 import java.time.Year;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static java.util.Objects.nonNull;
 
@@ -60,9 +58,10 @@ public class Video extends AggregateRoot<VideoID> {
             final AudioVideoMedia video,
             final Set<CategoryID> categories,
             final Set<GenreID> genres,
-            final Set<CastMemberID> castmembers
+            final Set<CastMemberID> castmembers,
+            final List<DomainEvent> events
     ) {
-        super(anId);
+        super(anId, events);
         this.title = title;
         this.description = description;
         this.launchedAt = launchedAt;
@@ -84,7 +83,7 @@ public class Video extends AggregateRoot<VideoID> {
 
     @Override
     public void validate(ValidationHandler handler) {
-        new VideoValidator(this,handler).validate();
+        new VideoValidator(this, handler).validate();
     }
 
     public Optional<ImageMedia> getBanner() {
@@ -139,7 +138,8 @@ public class Video extends AggregateRoot<VideoID> {
                 null,
                 categories,
                 genres,
-                castmembers
+                castmembers,
+                null
         );
     }
 
@@ -168,6 +168,7 @@ public class Video extends AggregateRoot<VideoID> {
         this.updatedAt = InstantUtils.now();
         return this;
     }
+
     public Video setThumbnailHalf(final ImageMedia thumbnailHalf) {
         this.thumbnailHalf = thumbnailHalf;
         this.updatedAt = InstantUtils.now();
@@ -216,7 +217,8 @@ public class Video extends AggregateRoot<VideoID> {
                 video.getVideo().orElse(null),
                 new HashSet<>(video.getCategories()),
                 new HashSet<>(video.getGenres()),
-                new HashSet<>(video.getCastMembers())
+                new HashSet<>(video.getCastMembers()),
+                video.getDomainEvents()
         );
     }
 
@@ -246,7 +248,7 @@ public class Video extends AggregateRoot<VideoID> {
         return this;
     }
 
-    public static Video with (
+    public static Video with(
             final VideoID anId,
             final String title,
             final String description,
@@ -284,7 +286,8 @@ public class Video extends AggregateRoot<VideoID> {
                 video,
                 categories,
                 genres,
-                castmembers
+                castmembers,
+                null
         );
     }
 
