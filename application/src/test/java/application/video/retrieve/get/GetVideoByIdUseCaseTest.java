@@ -4,7 +4,6 @@ import application.UseCaseTest;
 import com.arthurlamberti.videoplataform.application.video.retrieve.get.DefaultGetVideoByIdUseCase;
 import com.arthurlamberti.videoplataform.domain.Fixture;
 import com.arthurlamberti.videoplataform.domain.exception.NotFoundException;
-import com.arthurlamberti.videoplataform.domain.resource.Resource;
 import com.arthurlamberti.videoplataform.domain.resource.VideoMediaType;
 import com.arthurlamberti.videoplataform.domain.utils.IdUtils;
 import com.arthurlamberti.videoplataform.domain.video.*;
@@ -67,11 +66,11 @@ public class GetVideoByIdUseCaseTest extends UseCaseTest {
                         expectedGenres,
                         expectedMembers
                 )
-                .setVideo(expectedVideo)
-                .setTrailer(expectedTrailer)
-                .setBanner(expectedBanner)
-                .setThumbnail(expectedThumb)
-                .setThumbnailHalf(expectedThumbHalf);
+                .updateVideoMedia(expectedVideo)
+                .updateTrailerMedia(expectedTrailer)
+                .updateBannerMedia(expectedBanner)
+                .updateThumbnailMedia(expectedThumb)
+                .updateThumbnailHalfMedia(expectedThumbHalf);
 
         final var expectedId = aVideo.getId();
 

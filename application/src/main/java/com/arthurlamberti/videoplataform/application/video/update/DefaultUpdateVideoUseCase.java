@@ -1,6 +1,5 @@
 package com.arthurlamberti.videoplataform.application.video.update;
 
-import com.arthurlamberti.videoplataform.application.video.create.CreateVideoCommand;
 import com.arthurlamberti.videoplataform.domain.Identifier;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
@@ -109,11 +108,11 @@ public class DefaultUpdateVideoUseCase extends UpdateVideoUseCase {
                     .orElse(null);
 
             return this.videoGateway.update(
-                    aVideo.setVideo(aVideoMedia)
-                            .setBanner(aBannerMedia)
-                            .setTrailer(aTrailerMedia)
-                            .setThumbnail(aThumbMedia)
-                            .setThumbnailHalf(aThumbHalfMedia)
+                    aVideo.updateVideoMedia(aVideoMedia)
+                            .updateBannerMedia(aBannerMedia)
+                            .updateTrailerMedia(aTrailerMedia)
+                            .updateThumbnailMedia(aThumbMedia)
+                            .updateThumbnailHalfMedia(aThumbHalfMedia)
             );
         } catch (final Throwable t) {
             throw InternalErrorException.with("An error on update video was observed [videoId:%s]".formatted(anId.getValue()), t);

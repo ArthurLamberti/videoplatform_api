@@ -1,10 +1,11 @@
 package com.arthurlamberti.videoplataform.infrastructure.video;
 
 import com.arthurlamberti.videoplataform.domain.Identifier;
-import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.pagination.Pagination;
 import com.arthurlamberti.videoplataform.domain.utils.CollectionsUtils;
 import com.arthurlamberti.videoplataform.domain.video.*;
+import com.arthurlamberti.videoplataform.infrastructure.configuration.annotations.VideoCreatedQueue;
+import com.arthurlamberti.videoplataform.infrastructure.services.EventService;
 import com.arthurlamberti.videoplataform.infrastructure.utils.SqlUtils;
 import com.arthurlamberti.videoplataform.infrastructure.video.persistence.VideoJpaEntity;
 import com.arthurlamberti.videoplataform.infrastructure.video.persistence.VideoRepository;
@@ -15,22 +16,24 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+
+import static java.util.Objects.requireNonNull;
 
 @Component
 public class DefaultVideoGateway implements VideoGateway {
 
     private final VideoRepository videoRepository;
+    private final EventService eventService;
 
-    public DefaultVideoGateway(final VideoRepository videoRepository) {
-        this.videoRepository = Objects.requireNonNull(videoRepository);
+    public DefaultVideoGateway(final VideoRepository videoRepository, @VideoCreatedQueue EventService eventService) {
+        this.videoRepository = requireNonNull(videoRepository);
+        this.eventService = requireNonNull(eventService);
     }
 
     @Override
     @Transactional
     public Video create(final Video aVideo) {
-        return this.videoRepository.save(VideoJpaEntity.from(aVideo)).toAggregate();
+        return save(aVideo);
     }
 
     @Override
@@ -50,7 +53,7 @@ public class DefaultVideoGateway implements VideoGateway {
     @Override
     @Transactional
     public Video update(final Video aVideo) {
-        return this.videoRepository.save(VideoJpaEntity.from(aVideo)).toAggregate();
+        return save(aVideo);
     }
 
     @Override
@@ -73,5 +76,11 @@ public class DefaultVideoGateway implements VideoGateway {
                 actualPage.getTotalElements(),
                 actualPage.toList()
         );
+    }
+
+    private Video save(Video aVideo) {
+        final var result = this.videoRepository.save(VideoJpaEntity.from(aVideo)).toAggregate();
+        aVideo.publishDomainEvents(this.eventService::send);
+        return result;
     }
 }

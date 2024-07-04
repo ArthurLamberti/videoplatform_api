@@ -5,7 +5,6 @@ import com.arthurlamberti.videoplataform.domain.castmember.CastMemberGateway;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryGateway;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
-import com.arthurlamberti.videoplataform.domain.exception.DomainException;
 import com.arthurlamberti.videoplataform.domain.exception.InternalErrorException;
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
 import com.arthurlamberti.videoplataform.domain.genre.GenreGateway;
@@ -109,11 +108,11 @@ public class DefaultCreateVideoUseCase extends CreateVideoUseCase {
                     .orElse(null);
 
             return this.videoGateway.create(
-                    aVideo.setVideo(aVideoMedia)
-                            .setBanner(aBannerMedia)
-                            .setTrailer(aTrailerMedia)
-                            .setThumbnail(aThumbMedia)
-                            .setThumbnailHalf(aThumbHalfMedia)
+                    aVideo.updateVideoMedia(aVideoMedia)
+                            .updateBannerMedia(aBannerMedia)
+                            .updateTrailerMedia(aTrailerMedia)
+                            .updateThumbnailMedia(aThumbMedia)
+                            .updateThumbnailHalfMedia(aThumbHalfMedia)
             );
         } catch (final Throwable t) {
             this.mediaResourceGateway.clearResources(anId);

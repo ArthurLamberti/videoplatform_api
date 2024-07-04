@@ -96,4 +96,8 @@ public class AudioVideoMedia extends ValueObject {
     public int hashCode() {
         return Objects.hash(getChecksum(), getRawLocation());
     }
+
+    public boolean isPendindEncode() {
+        return MediaStatus.PENDING == this.status;
+    }
 }

@@ -161,7 +161,7 @@ public class VideoTest {
                 AudioVideoMedia.with("abc", "Video.mp4", "/123/videos", "", MediaStatus.PENDING);
 
         // when
-        final var actualVideo = Video.with(aVideo).setVideo(aVideoMedia);
+        final var actualVideo = Video.with(aVideo).updateVideoMedia(aVideoMedia);
 
         // then
         assertNotNull(actualVideo);
@@ -218,7 +218,7 @@ public class VideoTest {
                 AudioVideoMedia.with("abc", "Trailer.mp4", "/123/videos", "", MediaStatus.PENDING);
 
         // when
-        final var actualVideo = Video.with(aVideo).setTrailer(aTrailerMedia);
+        final var actualVideo = Video.with(aVideo).updateTrailerMedia(aTrailerMedia);
 
         // then
         assertNotNull(actualVideo);
@@ -275,7 +275,7 @@ public class VideoTest {
                 ImageMedia.with("abc", "Trailer.mp4", "/123/videos");
 
         // when
-        final var actualVideo = Video.with(aVideo).setBanner(aBannerMedia);
+        final var actualVideo = Video.with(aVideo).updateBannerMedia(aBannerMedia);
 
         // then
         assertNotNull(actualVideo);
@@ -332,7 +332,7 @@ public class VideoTest {
                 ImageMedia.with("abc", "Trailer.mp4", "/123/videos");
 
         // when
-        final var actualVideo = Video.with(aVideo).setThumbnail(aThumbMedia);
+        final var actualVideo = Video.with(aVideo).updateThumbnailMedia(aThumbMedia);
 
         // then
         assertNotNull(actualVideo);
@@ -389,7 +389,7 @@ public class VideoTest {
                 ImageMedia.with("abc", "Trailer.mp4", "/123/videos");
 
         // when
-        final var actualVideo = Video.with(aVideo).setThumbnailHalf(aThumbMedia);
+        final var actualVideo = Video.with(aVideo).updateThumbnailHalfMedia(aThumbMedia);
 
         // then
         assertNotNull(actualVideo);
