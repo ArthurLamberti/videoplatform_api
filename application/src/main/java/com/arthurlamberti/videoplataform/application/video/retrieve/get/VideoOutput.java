@@ -3,6 +3,7 @@ package com.arthurlamberti.videoplataform.application.video.retrieve.get;
 import com.arthurlamberti.videoplataform.domain.Identifier;
 import com.arthurlamberti.videoplataform.domain.video.AudioVideoMedia;
 import com.arthurlamberti.videoplataform.domain.video.ImageMedia;
+import com.arthurlamberti.videoplataform.domain.video.Rating;
 import com.arthurlamberti.videoplataform.domain.video.Video;
 
 import java.time.Instant;
@@ -20,7 +21,7 @@ public record VideoOutput(
         double duration,
         boolean opened,
         boolean published,
-        String rating,
+        Rating rating,
         Set<String> categories,
         Set<String> genres,
         Set<String> castMembers,
@@ -41,7 +42,7 @@ public record VideoOutput(
                 aVideo.getDuration(),
                 aVideo.isOpened(),
                 aVideo.isPublished(),
-                aVideo.getRating().getName(),
+                aVideo.getRating(),
                 mapTo(aVideo.getCategories(), Identifier::getValue),
                 mapTo(aVideo.getGenres(), Identifier::getValue),
                 mapTo(aVideo.getCastMembers(), Identifier::getValue),

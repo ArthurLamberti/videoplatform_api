@@ -28,10 +28,59 @@ import java.util.Objects;
 
 @Configuration
 public class VideoUseCaseConfig {
+    private final CategoryGateway categoryGateway;
+    private final CastMemberGateway castMemberGateway;
+    private final GenreGateway genreGateway;
+    private final MediaResourceGateway mediaResourceGateway;
     private final VideoGateway videoGateway;
 
-    public VideoUseCaseConfig(final VideoGateway videoGateway) {
+    public VideoUseCaseConfig(
+            final CategoryGateway categoryGateway,
+            final CastMemberGateway castMemberGateway,
+            final GenreGateway genreGateway,
+            final MediaResourceGateway mediaResourceGateway,
+            final VideoGateway videoGateway
+    ) {
+        this.categoryGateway = Objects.requireNonNull(categoryGateway);
+        this.castMemberGateway = Objects.requireNonNull(castMemberGateway);
+        this.genreGateway = Objects.requireNonNull(genreGateway);
+        this.mediaResourceGateway = Objects.requireNonNull(mediaResourceGateway);
         this.videoGateway = Objects.requireNonNull(videoGateway);
+    }
+
+    @Bean
+    public CreateVideoUseCase createVideoUseCase() {
+        return new DefaultCreateVideoUseCase(videoGateway, categoryGateway, genreGateway, castMemberGateway, mediaResourceGateway);
+    }
+
+    @Bean
+    public UpdateVideoUseCase updateVideoUseCase() {
+        return new DefaultUpdateVideoUseCase(videoGateway, categoryGateway, genreGateway, castMemberGateway, mediaResourceGateway);
+    }
+
+    @Bean
+    public GetVideoByIdUseCase getVideoByIdUseCase() {
+        return new DefaultGetVideoByIdUseCase(videoGateway);
+    }
+
+    @Bean
+    public DeleteVideoUseCase deleteVideoUseCase() {
+        return new DefaultDeleteVideoUseCase(videoGateway, mediaResourceGateway);
+    }
+
+    @Bean
+    public ListVideosUseCase listVideosUseCase() {
+        return new DefaultListVideosUseCase(videoGateway);
+    }
+
+    @Bean
+    public GetMediaUseCase getMediaUseCase() {
+        return new DefaultGetMediaUseCase(mediaResourceGateway);
+    }
+
+    @Bean
+    public UploadMediaUseCase uploadMediaUseCase() {
+        return new DefaultUploadMediaUseCase(mediaResourceGateway, videoGateway);
     }
 
     @Bean

@@ -9,9 +9,11 @@ import com.arthurlamberti.videoplataform.domain.video.MediaResourceGateway;
 import com.arthurlamberti.videoplataform.domain.video.VideoID;
 import com.arthurlamberti.videoplataform.infrastructure.configuration.properties.storage.StorageProperties;
 import com.arthurlamberti.videoplataform.infrastructure.services.StorageService;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class DefaultMediaResourceGateway implements MediaResourceGateway {
 
     private final String filenamePattern;

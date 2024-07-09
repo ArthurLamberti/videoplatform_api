@@ -73,6 +73,12 @@ spring:
     username: ${amqp.username}
     password: ${amqp.password}
     dynamic: ${amqp.admin.auto-create}
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 100GB
+
+
 logging:
   level:
     root: info
