@@ -1,6 +1,22 @@
 version: '3.7'
 
 services:
+  app:
+    container_name: adm_videos_app
+    build: .
+    profiles:
+      - app # use -- profile app after others containers is running
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+      - rabbitmq
+    networks:
+      - adm_videos_network
+
   mysql:
     container_name: adm_videos_mysql
     image: mysql:latest

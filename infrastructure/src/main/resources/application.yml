@@ -27,7 +27,7 @@ amqp:
 google:
   cloud:
     credentials: ${GOOGLE_CLOUD_CREDENTIALS}
-    projectId: ${GOOGLE_CLOUD_PROJECT_ID}
+    projectId: ${GOOGLE_CLOUD_PROJECT}
     storage:
       catalogo-video:
        bucket: fc3_catalogo_video
