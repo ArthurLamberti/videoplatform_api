@@ -1,4 +1,4 @@
-FROM bellsoft/liberica-openjdk-alpine-musl:17
+FROM eclipse-temurin:17.0.5_8-jre-alpine
 
 COPY build/libs/*.jar /opt/app/application.jar
 

@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'features/**'
+      - 'feat/**'
       - 'main'
   workflow_dispatch: #Necessario pra rodar via interface
 
