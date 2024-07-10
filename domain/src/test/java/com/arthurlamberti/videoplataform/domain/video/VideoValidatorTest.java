@@ -1,5 +1,6 @@
 package com.arthurlamberti.videoplataform.domain.video;
 
+import com.arthurlamberti.videoplataform.domain.UnitTest;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
 import com.arthurlamberti.videoplataform.domain.exception.DomainException;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Year;
 import java.util.Set;
 
-public class VideoValidatorTest {
+public class VideoValidatorTest extends UnitTest {
     @Test
     public void givenNullTitle_whenCallsValidate_shouldReceiveError() {
         // given

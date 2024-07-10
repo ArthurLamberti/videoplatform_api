@@ -1,3 +1,5 @@
+package com.arthurlamberti.videoplataform.domain;
+
 import com.arthurlamberti.videoplataform.domain.Entity;
 import com.arthurlamberti.videoplataform.domain.Identifier;
 import com.arthurlamberti.videoplataform.domain.events.DomainEvent;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class EntityTest {
+public class EntityTest extends UnitTest{
 
     @Test
     public void givenNullAsEvents_whenInstantiate_shouldBeOk() {

@@ -1,5 +1,6 @@
 package com.arthurlamberti.videoplataform.domain.genre;
 
+import com.arthurlamberti.videoplataform.domain.UnitTest;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +12,7 @@ import java.util.List;
 import static com.arthurlamberti.videoplataform.domain.utils.StringUtils.generateValidString;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GenreTest {
+public class GenreTest extends UnitTest {
 
     @Test
     public void givanValidParams_whenCallNewGenre_shouldInstantiateAGenre() {

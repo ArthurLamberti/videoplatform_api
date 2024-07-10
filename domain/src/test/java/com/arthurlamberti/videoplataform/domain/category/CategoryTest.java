@@ -1,5 +1,6 @@
 package com.arthurlamberti.videoplataform.domain.category;
 
+import com.arthurlamberti.videoplataform.domain.UnitTest;
 import com.arthurlamberti.videoplataform.domain.exception.DomainException;
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
 import com.arthurlamberti.videoplataform.domain.validation.handler.ThrowsValidationHandler;
@@ -8,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CategoryTest {
+public class CategoryTest  extends UnitTest {
 
     @Test
     public void givenAValidParams_whenCallNewCategory_thenInstantiateACategory() {

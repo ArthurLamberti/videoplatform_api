@@ -9,6 +9,7 @@
         </processorPath>
         <module name="videoplataform.infrastructure.main" />
         <module name="videoplataform.domain.main" />
+        <module name="videoplataform.application.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />

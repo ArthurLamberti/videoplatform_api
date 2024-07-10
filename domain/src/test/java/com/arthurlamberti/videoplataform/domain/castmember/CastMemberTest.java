@@ -1,12 +1,13 @@
 package com.arthurlamberti.videoplataform.domain.castmember;
 
+import com.arthurlamberti.videoplataform.domain.UnitTest;
 import com.arthurlamberti.videoplataform.domain.exception.NotificationException;
 import com.arthurlamberti.videoplataform.domain.utils.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CastMemberTest {
+public class CastMemberTest extends UnitTest {
 
     @Test
     public void givenAValidParams_whenCallsNewMembem_thenInstantaiteACastMember() {

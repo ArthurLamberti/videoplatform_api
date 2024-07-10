@@ -1,5 +1,6 @@
 package com.arthurlamberti.videoplataform.domain.video;
 
+import com.arthurlamberti.videoplataform.domain.UnitTest;
 import com.arthurlamberti.videoplataform.domain.castmember.CastMemberID;
 import com.arthurlamberti.videoplataform.domain.category.CategoryID;
 import com.arthurlamberti.videoplataform.domain.genre.GenreID;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class VideoTest {
+public class VideoTest extends UnitTest {
     @Test
     public void givenValidParams_whenCallsNewVideo_thenShouldInstantiate() {
         final var expectedTitle = StringUtils.generateValidString(10);

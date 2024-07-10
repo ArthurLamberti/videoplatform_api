@@ -1,10 +1,11 @@
 package com.arthurlamberti.videoplataform.domain.video;
 
+import com.arthurlamberti.videoplataform.domain.UnitTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ImageMediaTest {
+public class ImageMediaTest extends UnitTest {
 
     @Test
     public void givenValidParams_whenCallsNewImage_ShouldReturnInstance() {
