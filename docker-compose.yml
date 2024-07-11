@@ -3,7 +3,8 @@ version: '3.7'
 services:
   app:
     container_name: adm_videos_app
-    build: .
+#    build: .
+    image: arthurlamberti/admin-catalogo:main-2
     profiles:
       - app # use -- profile app after others containers is running
     restart: unless-stopped
