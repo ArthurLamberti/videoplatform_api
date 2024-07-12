@@ -44,10 +44,24 @@
   - Docker
   - Google Cloud Storage
   - KeyCloak
-  - Elastic Search
+  - Elastic Stack
   - Kibana
 
 ## Padrões de código
+
+<p>Para o desenvolvimento dessa API, utilizamos o padrão DDD, separando o código nas camadas de application, domain e infrastructure</p>
+<h3>Application</h3>
+<p>Camada referente à comunicação com a camada de Domain através da implementação dos casos de uso</p>
+<p>Possui a implementação dos casos de usos necessário para o funcionamento</p>
+
+<h3>Domain</h3>
+<p>Define os objetos de valores e agregados, juntamente com as validações coerentes à entidade</p>
+<p>Contém os casos de uso e a lógica principal do negócio</p>
+
+<h3>Infrastructure</h3>
+<p>Fornece implementações para as interfaces definidas na camada de domain</p>
+<p>Realiza a comunicação entre outros serviços e banco de dados</p>
+
 
 ## Como rodar
 
