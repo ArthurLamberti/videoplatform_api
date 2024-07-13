@@ -29,9 +29,9 @@
   - [x] Upload do video pro Google Cloud Storage
   - [x] Domain Events (rabbitmq)
   - [x] CI/CD
-  - Autenticação com keyCloak
-  - Ambiente Sandbox
-  - Observabilidade
+  - [ ] Autenticação com keyCloak
+  - [ ] Ambiente Sandbox
+  - [ ] Observabilidade
 
 ## Tecnologias
   - Gradle
