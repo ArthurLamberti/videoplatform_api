@@ -6,7 +6,7 @@
  <a href="#objetivo">Objetivo</a> •
  <a href="#features">Features</a> •
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#padroes-de-codigo">Padrões de código</a> • 
+ <a href="#padrões-de-código">Padrões de código</a> • 
  <a href="#como-rodar">Como rodar</a> • 
  <a href="#autor">Autor</a>
 </p>
