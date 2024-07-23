@@ -11,6 +11,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+sandbox/.docker
+sandbox/app/.env.local
 
 # AWS User-specific
 .idea/**/aws.xml

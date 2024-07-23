@@ -22,7 +22,13 @@ public class StorageConfig {
     }
 
     @Bean(name = "storageService")
-    @Profile({"development", "production"})
+    @Profile({"development", "test-integration", "test-e2e"})
+    public StorageService inMemoryStorageService() {
+        return new InMemoryStorageService();
+    }
+
+    @Bean(name = "storageService")
+    @ConditionalOnMissingBean
     public StorageService gcStorageService(
             final GoogleStorageProperties props,
             final Storage storage
@@ -30,9 +36,4 @@ public class StorageConfig {
         return new GCStorageImpl(props.getBucket(), storage);
     }
 
-    @Bean(name = "storageService")
-    @ConditionalOnMissingBean
-    public StorageService inMemoryStorageService() {
-        return new InMemoryStorageService();
-    }
 }
