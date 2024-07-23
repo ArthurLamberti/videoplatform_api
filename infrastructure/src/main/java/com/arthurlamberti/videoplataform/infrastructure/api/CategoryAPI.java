@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(value = "categories")
@@ -37,6 +38,7 @@ public interface CategoryAPI {
             @ApiResponse(responseCode = "422", description = "A invalid parameter was received"),
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
     })
+    @Secured({"ROLE_CATALOGO_ADMIN", "ROLE_CATALOGO_CATEGORIES"})
     Pagination<CategoryListResponse> listCategories(
             @RequestParam(name = "search", required = false, defaultValue = "") final String search,
             @RequestParam(name = "page", required = false, defaultValue = "0") final int page,

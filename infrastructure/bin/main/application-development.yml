@@ -12,10 +12,6 @@ mysql:
   schema: adm_videos
   url: localhost:3306
 
-keycloak:
-  realm: codeflix
-  host: http://localhost:8443
-
 server:
   port: 8080
   undertow:

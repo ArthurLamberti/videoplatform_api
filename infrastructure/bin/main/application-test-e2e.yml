@@ -8,10 +8,6 @@ mysql:
   schema: adm_videos
   url: localhost:${mysql.port}
 
-keycloak:
-  realm: codeflix
-  host: http://localhost:8443
-
 spring:
   autoconfigure:
     exclude:

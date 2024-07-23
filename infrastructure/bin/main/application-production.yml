@@ -10,10 +10,6 @@ mysql:
   schema: adm_videos
   url: ${DATABASE_MYSQL_URL:localhost:3306}
 
-keycloak:
-  realm: codeflix
-  host: ${KEYCLOAK_HOST:http://localhost:8443}
-
 spring:
   jpa:
     show-sql: false

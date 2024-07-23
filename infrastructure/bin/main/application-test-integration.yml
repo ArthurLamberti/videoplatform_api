@@ -11,7 +11,3 @@ spring:
     console:
       enabled: true
       path: /h2
-
-keycloak:
-  realm: codeflix
-  host: http://localhost:8443

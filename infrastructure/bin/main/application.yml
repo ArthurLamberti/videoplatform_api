@@ -77,12 +77,6 @@ spring:
     multipart:
       max-file-size: 10GB
       max-request-size: 100GB
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: ${keycloak.host}/realms/${keycloak.realm}/protocol/openid-connect/certs
-          issue-uri: ${keycloak.host}/realms/${keycloak.realm}
 
 
 logging:
